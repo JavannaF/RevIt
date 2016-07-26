@@ -1,0 +1,29 @@
+<p>
+    <strong>User:</strong>
+    <%= review.user %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= review.comment %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= review.price %>
+  </p>
+
+  <p>
+    <strong>Rating:</strong>
+    <%= review.rating %>
+  </p>
+
+  <p>
+    <strong>Store:</strong>
+    <%= review.store %>
+  </p>
+ <p>
+  <%= link_to 'Destroy review', [review.item, review],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>

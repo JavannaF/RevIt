@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Avg price:</strong>
+  <%= @item.avg_price %>
+</p>
+
+<p>
+  <strong>Avg rating:</strong>
+  <%= @item.avg_rating %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<h2>Comments</h2>
+  <%= render @item.reviews %>
+    
+
+<h2>Add a comment:</h2>
+  <%= render 'reviews/form' %>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
