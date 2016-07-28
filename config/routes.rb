@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
+  get  'signup' => 'users/new'
 
-  get 'static_pages/help'
+  get 'home' => 'static_pages/home'
+
+  get 'help' => 'static_pages/help'
 
   resources :reviews
   resources :items do
