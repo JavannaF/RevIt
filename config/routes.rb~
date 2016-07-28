@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+
+  get 'static_pages/help'
+
   resources :reviews
-  resources :items
+  resources :items do
+	resources :reviews
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -22,19 +28,19 @@ Rails.application.routes.draw do
   #       get 'short'
   #       post 'toggle'
   #     end
-  #
+  #ggetti ruby on rails
   #     collection do
   #       get 'sold'
   #     end
-  #   end
+  #   endggetti ruby on rails
 
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
   #     resource :seller
-  #   end
+  #   endggetti ruby on rails
 
-  # Example resource route with more complex sub-resources:
+  # Example resource route with more complex sub-resources:ggetti ruby on rails
   #   resources :products do
   #     resources :comments
   #     resources :sales do
