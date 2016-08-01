@@ -9,6 +9,11 @@
     </section>
   </aside>
   <%= link_to 'Home', home_path %>
+  <%= link_to "Users",    '#' %>
+  <%= link_to "Settings", '#' %>
+  <%= link_to "Log out", logout_path, method: :delete %>
+  <%= link_to "Profile", current_user %>
+  <%= link_to "Log in", login_path %>
 </div>
 
 

@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get  'signup' => 'users#new'
 
   get 'home' => 'static_pages#home'
 
   get 'help' => 'static_pages#help'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
   
   resources :users
   resources :reviews
