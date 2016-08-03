@@ -27,7 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #paginazione
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
-
+#crea utenti falsi
+gem 'faker',                '1.4.2'
 
 
 # Use Unicorn as the app server
