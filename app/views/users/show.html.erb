@@ -8,6 +8,16 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.items.any? %>
+      <h3>Items(<%= @user.items.count %>)</h3>
+      <ol class="items">
+        <%= render @items %>
+      </ol>
+      <%= will_paginate @items %>
+    <% end %>
+  </div>
+
   <%= link_to 'Home', home_path %>
   <%= link_to "Users",    users_path %>
   <%= link_to "Settings", edit_user_path(current_user) %>

@@ -8,10 +8,6 @@
         <%= render 'shared/item_form' %>
       </section>
     </aside>
-    <div class="col-md-8">
-      <h3>Item Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
   </div>
 <% else %>
 

@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user,   only: :destroy
   # GET /items
   # GET /items.json
   def index
@@ -25,16 +26,13 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    @item = current_user.items.build(item_params)
+    if @item.save
+      flash[:success] = "item created!"
+      redirect_to root_url
+    else
+      @feed_items = []
+      render 'static_pages/home'
     end
   end
 
@@ -54,12 +52,10 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   # DELETE /items/1.json
-  def destroy
+  def destroy    
     @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Item deleted"
+    redirect_to request.referrer || root_url
   end
 
   private
@@ -71,5 +67,10 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:name, :avg_price, :avg_rating, :description)
+    end
+
+    def correct_user
+      @item = current_user.items.find_by(id: params[:id])
+      redirect_to root_url if @item.nil?
     end
 end
