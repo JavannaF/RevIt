@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+#SASS Ruby Gem FontAwesome
+gem 'font-awesome-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 #funzione per criptare password
