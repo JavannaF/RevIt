@@ -1,23 +1,16 @@
 <% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-      <section class="item_form">
-        <%= render 'shared/item_form' %>
-      </section>
-    </aside>
-  </div>
+<div class="row">
+<aside class="col-md-4">
+<section class="user_info">
+<%= render 'shared/user_info' %>
+</section>
+<section class="item_form">
+<%= render 'shared/item_form' %>
+</section>
+</aside>
+</div>
+
 <% else %>
-
-
-<h1>RevIt</h1>
-<p>Il sito dove puoi recensire ogni oggetto</p>
-<%= link_to 'Items',items_path %> |
-<%= link_to 'Reviews', reviews_path %>
-<%= link_to 'Signup', signup_path %>
-<%= link_to 'Login', login_path %>
-
+    <%= render partial: "home" %>
 <% end %>
 

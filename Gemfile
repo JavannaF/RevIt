@@ -55,5 +55,8 @@ group :development do
   gem 'fog',                     '1.23.0'
   gem 'net-ssh'
 
+  #login fb
+  gem 'omniauth'
+  gem 'omniauth-facebook'
 end
 
