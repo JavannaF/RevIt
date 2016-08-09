@@ -6,6 +6,14 @@ class Item < ActiveRecord::Base
 
   validates :user_id, presence: true
   validate  :picture_size
+  
+  
+
+def self.search(search)
+  where("name LIKE ?", "%#{search}%")
+  
+end
+
 
 
   private

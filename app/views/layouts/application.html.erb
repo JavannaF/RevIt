@@ -124,9 +124,10 @@
                         </li>
                         
                         <li class="has-form">
-                            <form>
-                                <input type="text" placeholder="Search...">
-                            </form>
+                        <%= form_tag(items_path, :method => "get", id: "search-form") do %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
+                        <%= submit_tag "Search" %>
+                        <% end %>
                         </li>
                         <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
                 </ul>
