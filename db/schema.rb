@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160808144759) do
+=======
+ActiveRecord::Schema.define(version: 20160808094459) do
+
+  create_table "authorizations", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+>>>>>>> 7dafc6d928f5e9a33c940c8b8162d0297a331ade
 
   create_table "items", force: :cascade do |t|
     t.string   "name"

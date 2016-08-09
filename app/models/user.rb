@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
+<<<<<<< HEAD
   has_many :reviews, dependent: :destroy
+=======
+  has_many :authorizations
+>>>>>>> 7dafc6d928f5e9a33c940c8b8162d0297a331ade
   has_many :items, dependent: :destroy
   attr_accessor :remember_token , :activation_token, :reset_token
   before_save   :downcase_email

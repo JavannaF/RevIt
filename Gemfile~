@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-
-
+#SASS Ruby Gem FontAwesome
+gem 'font-awesome-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 #funzione per criptare password
@@ -53,6 +53,10 @@ group :development do
   gem 'carrierwave',             '0.10.0'
   gem 'mini_magick',             '3.8.0'
   gem 'fog',                     '1.23.0'
+  gem 'net-ssh'
+
+  #login fb
+  gem 'omniauth'
 
 end
 
