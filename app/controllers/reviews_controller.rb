@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
   http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+  
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user,   only: :destroy
 
   # GET /reviews
   # GET /reviews.json
@@ -11,6 +14,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    @user = User.find(params[:id])
+    @reviews = @user.review.paginate(page: params[:page])
   end
 
   # GET /reviews/new
@@ -75,6 +80,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:user, :comment, :price, :rating, :store, :item_id)
+      params.require(:review).permit(:comment, :price, :rating, :store)
     end
 end

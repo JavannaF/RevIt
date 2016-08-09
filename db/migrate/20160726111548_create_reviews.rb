@@ -1,7 +1,7 @@
 class CreateReviews < ActiveRecord::Migration
   def change
     create_table :reviews do |t|
-      t.string :user
+      t.references :user, index: true, foreign_key: true
       t.text :comment
       t.float :price
       t.float :rating
@@ -10,5 +10,6 @@ class CreateReviews < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :reviews, [:user_id, :created_at]
   end
 end
