@@ -53,4 +53,24 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
+
+  def create_own
+    owner = Owner.find_by(email: params[:session][:email].downcase)
+    if owner && owner.authenticate(params[:session][:password])
+      log_in_owner owner
+      params[:session][:remember_me] == '1' ? remember_owner(owner) : forget_owner(owner)
+      redirect_back_or owner
+
+
+    else
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new_own'
+    end
+  end
+
+  def destroy_own
+    log_out_owner if logged_in_owner?
+    redirect_to root_url
+  end
+
 end

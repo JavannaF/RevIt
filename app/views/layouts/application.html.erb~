@@ -125,9 +125,6 @@
                         <li>
                             <a href="signup"> Signup </a>
                         </li>
-                        <li>
-                            <a href="signupowners"> Signup Owners </a>
-                        </li>
                         
                         <li class="has-form">
                             <form>
