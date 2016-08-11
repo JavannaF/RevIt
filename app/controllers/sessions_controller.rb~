@@ -65,10 +65,12 @@ class SessionsController < ApplicationController
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new_own'
+    end
   end
 
   def destroy_own
     log_out_owner if logged_in_owner?
     redirect_to root_url
   end
+
 end

@@ -41,7 +41,7 @@ Owner.create!(name:  "Example Owner",
 
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "exampleee-#{n+1}@railstutorial.org"
   website = name
   description = name
   password = "password"
