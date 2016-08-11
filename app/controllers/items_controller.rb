@@ -5,15 +5,15 @@ class ItemsController < ApplicationController
   before_action :correct_user,   only: :destroy
   # GET /items
   # GET /items.json
+  
   def index
-    @items = Item.all
-    if params[:search]
-      @items = Item.search(params[:search]).order("created_at DESC")
+   
+    if (params[:name] || params[:avg_rating])
+      @items = Item.search(params[:name], params[:avg_rating]).all
     else
-      @items = Item.all.order("created_at DESC")
-    end
+  @items=Item.all
   end
-
+  end
   # GET /items/1
   # GET /items/1.json
   def show

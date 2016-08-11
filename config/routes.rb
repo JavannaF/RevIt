@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get  'signup' => 'users#new'
 
   get 'home' => 'static_pages#home'
+  get 'search/search'
+  get 'avd_search'=>'search'
+
 
   get 'help' => 'static_pages#help'
   get 'login' => 'sessions#new'

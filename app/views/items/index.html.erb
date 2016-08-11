@@ -28,11 +28,6 @@
     <% end %>
   </tbody>
 </table>
-<br>
-      <% if @items.present? %>
-	 <% else %>
-  	 <p>There are no items containing the term(s) <%= params[:search] %>.</p>
-	<% end %>
-<br>
+
 
 <%= link_to 'New Item', new_item_path %>

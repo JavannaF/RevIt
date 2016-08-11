@@ -9,9 +9,11 @@ class Item < ActiveRecord::Base
   
   
 
-def self.search(search)
-  where("name LIKE ?", "%#{search}%")
-  
+
+
+def self.search(search_name, search_rating) 
+  return scope unless search_name.present? || search_rating.present?
+  where(['name LIKE ? AND avg_rating LIKE ?', "%#{search_name}%", "%#{search_rating}%"])
 end
 
 

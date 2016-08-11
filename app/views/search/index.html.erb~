@@ -1,0 +1,5 @@
+<%= form_tag search_index_path, method: :get do %>
+  <%= text_field_tag :item.name, params[:item.name] %><br>
+  <%= text_field_tag :item.avg_rating, params[:item.avg_ratings] %>  
+  <%= submit_tag "Search", name: nil %>
+<% end %>

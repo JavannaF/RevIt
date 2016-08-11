@@ -124,11 +124,11 @@
                         </li>
                         
                         <li>
-                        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-                        <%= text_field_tag :search, params[:search], placeholder: "Search User" %>
+                        <%= form_tag(items_path, :method => "get", id: "search-form") do %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
                         <%= submit_tag "Search" %>
                         <% end %>
-                        <%= link_to "AdvancedSearch", search_search_path%></li>
+                        <%= link_to "AdvancedSearch", avd_search_path%></li>
                         <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
                 </ul>
                 

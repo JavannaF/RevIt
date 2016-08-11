@@ -1,0 +1,18 @@
+<% form_for(@items) do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :avg_rating %><br />
+    <%= f.collection_select :avg_rating %>
+  </p>
+  <p>
+    Price Range<br />
+    <%= f.text_field :avg_price, :size => 7 %> 
+    
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+
+
