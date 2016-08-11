@@ -19,9 +19,10 @@ class OwnersController < ApplicationController
   def create
     @owner = Owner.new(owner_params)
     if @owner.save
-      log_in_owner @owner
-      flash[:success] = "Welcome to RevIt"
-      redirect_to @owner
+      @owner.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+
     else
       render 'new'
     end

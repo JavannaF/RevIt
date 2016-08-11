@@ -2,7 +2,7 @@
 <h2>&nbsp&nbsp&nbspLog in Owners</h2>
 
     <div class="container">
-        <%= form_for(:session, url: login_path) do |f| %>
+        <%= form_for(:session, url: loginowners_path) do |f| %>
     
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control' %>

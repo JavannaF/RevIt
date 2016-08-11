@@ -4,7 +4,7 @@ class OwnersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @owner = Owner.paginate(page: params[:page])
+    @owners = Owner.paginate(page: params[:page])
 
   end
   
@@ -19,9 +19,10 @@ class OwnersController < ApplicationController
   def create
     @owner = Owner.new(owner_params)
     if @owner.save
-      log_in_owner @owner
-      flash[:success] = "Welcome to RevIt"
-      redirect_to @owner
+      UserMailer.account_activation(@owner).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+
     else
       render 'new'
     end

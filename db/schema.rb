@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810102859) do
+ActiveRecord::Schema.define(version: 20160811140203) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -40,10 +40,13 @@ ActiveRecord::Schema.define(version: 20160810102859) do
     t.string   "email"
     t.string   "website"
     t.text     "description"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
   end
 
   add_index "owners", ["email"], name: "index_owners_on_email", unique: true

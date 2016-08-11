@@ -37,7 +37,10 @@ Owner.create!(name:  "Example Owner",
              website: "owner.it",
              description: "owners di prova",
              password:              "owners",
-             password_confirmation: "owners")
+             password_confirmation: "owners",
+             activated: true,
+             activated_at: Time.zone.now)
+
 
 99.times do |n|
   name  = Faker::Name.name
@@ -50,5 +53,8 @@ Owner.create!(name:  "Example Owner",
                website: website,
                description: description,  
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
+
 end

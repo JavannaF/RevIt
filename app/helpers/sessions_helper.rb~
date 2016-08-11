@@ -97,6 +97,11 @@ module SessionsHelper
     user == current_user
   end
 
+  # Returns true if the given owner is the current owner.
+  def current_owner?(owner)
+    owner == current_owner
+  end
+
   # Redirects to stored location (or to the default).
   def redirect_back_or(default)
     redirect_to(session[:forwarding_url] || default)
