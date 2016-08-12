@@ -9,8 +9,16 @@ class UsersController < ApplicationController
     redirect_to users_url
 
   end
+  
   def index
-    @users = User.paginate(page: params[:page])
+   
+    
+    if params[:search]
+      @users = User.search(params[:search]).order("created_at DESC").paginate(page: params[:page])
+    else
+       @users = User.paginate(page: params[:page])
+      end
+ 
   end
 
   def new

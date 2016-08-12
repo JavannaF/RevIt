@@ -135,11 +135,12 @@
                             <a href="signupowners"> Signup Owners </a>
                         </li>
                         
-                        <li class="has-form">
-                            <form>
-                                <input type="text" placeholder="Search...">
-                            </form>
-                        </li>
+                        <li>
+                        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Search User" %>
+                        <%= submit_tag "Search" %>
+                        <% end %>
+                        <%= link_to "AdvancedSearch", search_search_path%></li>
                         <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
                 </ul>
                 

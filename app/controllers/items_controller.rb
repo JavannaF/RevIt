@@ -5,10 +5,15 @@ class ItemsController < ApplicationController
   before_action :correct_user,   only: :destroy
   # GET /items
   # GET /items.json
+  
   def index
-    @items = Item.all
+   
+    if (params[:name] || params[:avg_rating]|| params[:min_price] || params[:max_price])
+      @items = Item.search(params[:name], params[:avg_rating], params[:min_price], params[:max_price]).all
+    else
+  @items=Item.all
   end
-
+  end
   # GET /items/1
   # GET /items/1.json
   def show
