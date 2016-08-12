@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'owners/new'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get  'signup' => 'users#new'
+  get  'signupowners' => 'owners#new'
 
   get 'home' => 'static_pages#home'
   get 'search/search'
@@ -16,16 +19,20 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get    'loginowners'   => 'sessions#new_own'
+  post   'loginowners'   => 'sessions#create_own'
+  delete 'logoutowners'  => 'sessions#destroy_own'
+
 
   get 'auth/:provider/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'signout'
   
-  
+  resources :owners
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new,:create,:edit, :update]
-
+  resources :adds , only: [:create, :destroy, :update]
   resources :reviews
   resources :items 
   # The priority is based upon order of creation: first created -> highest priority.

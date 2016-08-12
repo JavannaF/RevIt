@@ -31,3 +31,38 @@ users = User.order(:created_at).take(6)
   name = Faker::Lorem.sentence(5)
   users.each { |user| user.items.create!(name: name) }
 end
+
+Owner.create!(name:  "Example Owner",
+             email: "owners@gmail.com",
+             website: "owner.it",
+             description: "owners di prova",
+             password:              "owners",
+             password_confirmation: "owners",
+             activated: true,
+             activated_at: Time.zone.now)
+
+
+99.times do |n|
+  name  = Faker::Name.name
+  email = "exampleee-#{n+1}@railstutorial.org"
+  website = name
+  description = name
+  password = "password"
+  Owner.create!(name:  name,
+               email: email,
+               website: website,
+               description: description,  
+               password:              password,
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
+
+end
+
+owners = Owner.order(:created_at).take(6)
+50.times do
+  description = Faker::Lorem.sentence(5)
+  name = "prova"
+  price = 20.2
+  owners.each { |owner| owner.adds.create!(description: description, name: name, price: price) }
+end

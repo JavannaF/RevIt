@@ -1,0 +1,27 @@
+<% provide(:title, @owner.name) %>
+<h1>
+  <%= gravatar_for @owner %>
+  <%= @owner.name %>
+</h1>
+
+<div class="col-md-8">
+    <% if @owner.adds.any? %>
+      <h3>Adds (<%= @owner.adds.count %>)</h3>
+      <ol class="adds">
+        <%= render @adds %>
+      </ol>
+      <%= will_paginate @adds %>
+    <% end %>
+  </div>
+
+
+<%= link_to 'Home', home_path %>
+  <%= link_to "Owners",    owners_path %>
+  <% if logged_in_owner? %>
+  <%= link_to "Settings", edit_owner_path(current_owner) %>
+  
+  <%= link_to "Log out", logoutowners_path, method: :delete %>
+  <%= link_to "Profile", current_owner %>
+  <% else %>
+  <% end %>
+  <%= link_to "Log in", loginowners_path %>

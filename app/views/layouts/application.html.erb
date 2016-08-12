@@ -31,7 +31,7 @@
     <![endif]-->
 </head>
 <body>
-    
+    <% if !logged_in? %>
     <!-- Header -->
     <div class="container">
         <div class="row">
@@ -51,9 +51,18 @@
                     <a class="btn btn-primary" href="login"><i class="fa fa-user fa-fw"></i> Login</a>
                 </div>
             </div>
+
+            <div class="col-sm-4">
+                <div class="btn-group open">
+                    <a class="btn btn-primary" href="loginowners"><i class="fa fa-user fa-fw"></i> Login Owners</a>
+                </div>
+            </div>
+            
             </div>
         </div>
     </div>
+    <% else %>
+    <% end %>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar" role="navigation">
         <div class="container">
@@ -72,7 +81,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                             <li>
-                                <a href="home"> Home </a>
+                                <a href="/home"> Home </a>
                             </li>
                             <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Categories <i class="fa fa-fw fa-caret-down"></i></a>
@@ -121,6 +130,9 @@
                     
                         <li>
                             <a href="signup"> Signup </a>
+                        </li>
+                        <li>
+                            <a href="signupowners"> Signup Owners </a>
                         </li>
                         
                         <li>

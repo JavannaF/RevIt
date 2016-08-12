@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include SessionsHelper
-
+  
+  def current_user
+    return unless session[:user_id]
+    @current_user ||= User.find(session[:user_id])
+  end
 
   private
 
@@ -13,6 +17,15 @@ class ApplicationController < ActionController::Base
         store_location
         flash[:danger] = "Please log in."
         redirect_to login_url
+      end
+    end
+
+    # Confirms a logged-in owners.
+    def logged_in_owner
+      unless logged_in_owner?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to loginowners_url
       end
     end
 
