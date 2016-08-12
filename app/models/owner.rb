@@ -1,4 +1,5 @@
 class Owner < ActiveRecord::Base
+  has_many :adds , dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
@@ -53,6 +54,10 @@ class Owner < ActiveRecord::Base
   # Sends activation email.
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def feed
+    Add.where("owner_id = ?", id)
   end
 
   

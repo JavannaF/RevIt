@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811140203) do
+ActiveRecord::Schema.define(version: 20160812144205) do
+
+  create_table "adds", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.float    "price"
+    t.integer  "owner_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "picture"
+  end
+
+  add_index "adds", ["owner_id", "created_at"], name: "index_adds_on_owner_id_and_created_at"
+  add_index "adds", ["owner_id"], name: "index_adds_on_owner_id"
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"

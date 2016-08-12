@@ -19,7 +19,7 @@ class OwnersController < ApplicationController
   def create
     @owner = Owner.new(owner_params)
     if @owner.save
-      UserMailer.account_activation(@owner).deliver_now
+      @owner.send_activation_email
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
 

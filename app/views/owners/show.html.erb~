@@ -6,7 +6,7 @@
 
 <%= link_to 'Home', home_path %>
   <%= link_to "Owners",    owners_path %>
-  <% if logged_in? %>
+  <% if logged_in_owner? %>
   <%= link_to "Settings", edit_owner_path(current_owner) %>
   
   <%= link_to "Log out", logoutowners_path, method: :delete %>

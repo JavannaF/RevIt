@@ -58,3 +58,11 @@ Owner.create!(name:  "Example Owner",
                activated_at: Time.zone.now)
 
 end
+
+owners = Owner.order(:created_at).take(6)
+50.times do
+  description = Faker::Lorem.sentence(5)
+  name = "prova"
+  price = 20.2
+  owners.each { |owner| owner.adds.create!(description: description, name: name, price: price) }
+end

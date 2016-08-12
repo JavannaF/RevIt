@@ -35,10 +35,7 @@ module SessionsHelper
     end
   end
 
- # Returns the current logged-in owner (if any).
-  def current_owner
-    @current_owner ||= Owner.find_by(id: session[:owner_id])
-  end
+ 
 
  # Forgets a persistent session.
   def forget(user)

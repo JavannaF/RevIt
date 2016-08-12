@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+ 
   
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:create, :destroy]
