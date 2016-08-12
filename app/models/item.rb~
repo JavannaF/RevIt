@@ -1,9 +1,34 @@
 class Item < ActiveRecord::Base
   belongs_to :user
+  has_many :reviews, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
 
   validates :user_id, presence: true
   validate  :picture_size
+  
+  
+
+
+
+def self.search(search_name, search_rating, min_price, max_price) 
+  return Item.all unless search_name.present? || search_rating.present? || min_price.present? || max_price.present?
+    if search_rating!="" then float_rate=search_rating.to_f else float_rate=search_rating  end
+  if min_price!="" then float_min_price=min_price.to_f else float_min_price=min_price end
+  if max_price!="" then float_max_price=max_price.to_f else float_max_price=max_price end
+  where(['name LIKE ? AND avg_rating >= ? AND avg_price >= ? AND avg_price <= ?', "%#{search_name}%", float_rate, float_min_price, float_max_price])
+end
+
+
+
+  private
+
+    # Validates the size of an uploaded picture.
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
+    end
+
 
 end

@@ -11,9 +11,12 @@ class Item < ActiveRecord::Base
 
 
 
-def self.search(search_name, search_rating) 
-  return scope unless search_name.present? || search_rating.present?
-  where(['name LIKE ? AND avg_rating LIKE ?', "%#{search_name}%", "%#{search_rating}%"])
+def self.search(search_name, search_rating, min_price, max_price) 
+  return Item.all unless search_name.present? || search_rating.present? || min_price.present? || max_price.present?
+   float_rate=search_rating.to_f 
+   float_min_price=min_price.to_f 
+  float_max_price=max_price.to_f 
+  where(['name LIKE ? AND avg_rating >= ? AND avg_price >= ? AND avg_price <= ?', "%#{search_name}%", float_rate, float_min_price, float_max_price])
 end
 
 

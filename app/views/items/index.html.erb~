@@ -33,7 +33,9 @@
 <% end %>
   </tbody>
 </table>
- <tr> <% if !@items.present? %>
+ <tr> <% if @items.present? %>
+  <%= render @items %>
+<% else %>
   <p>There are no items matching these features.</p> </tr>
 <% end %>
 

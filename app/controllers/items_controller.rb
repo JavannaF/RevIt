@@ -8,8 +8,8 @@ class ItemsController < ApplicationController
   
   def index
    
-    if (params[:name] || params[:avg_rating])
-      @items = Item.search(params[:name], params[:avg_rating]).all
+    if (params[:name] || params[:avg_rating]|| params[:min_price] || params[:max_price])
+      @items = Item.search(params[:name], params[:avg_rating], params[:min_price], params[:max_price]).all
     else
   @items=Item.all
   end
