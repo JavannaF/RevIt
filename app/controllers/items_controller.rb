@@ -7,11 +7,15 @@ class ItemsController < ApplicationController
   # GET /items.json
   
   def index
-   
+    if (params[:category])
+      @items=Item.tagged_with(params[:category])
+    
+    else
     if (params[:name] || params[:avg_rating]|| params[:min_price] || params[:max_price])
       @items = Item.search(params[:name], params[:avg_rating], params[:min_price], params[:max_price]).all
     else
   @items=Item.all
+  end
   end
   end
   # GET /items/1
@@ -31,6 +35,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    params[:item][:tag_list] = params[:item][:tag_list].join(',')
     @item = current_user.items.build(item_params)
     if @item.save
       flash[:success] = "item created!"
@@ -71,7 +76,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :avg_price, :avg_rating, :description, :picture)
+      params.require(:item).permit(:name, :avg_price, :avg_rating, :description, :picture, :tag_list)
     end
 
     def correct_user

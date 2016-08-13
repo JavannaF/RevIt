@@ -6,19 +6,26 @@ class Item < ActiveRecord::Base
 
   validates :user_id, presence: true
   validate  :picture_size
-  
-  
 
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
+  acts_as_taggable_on :categories
+  attr_accessor :categories_list
+  
+  
 
 
 def self.search(search_name, search_rating, min_price, max_price) 
   return Item.all unless search_name.present? || search_rating.present? || min_price.present? || max_price.present?
-    if search_rating!="" then float_rate=search_rating.to_f else float_rate=search_rating  end
-  if min_price!="" then float_min_price=min_price.to_f else float_min_price=min_price end
-  if max_price!="" then float_max_price=max_price.to_f else float_max_price=max_price end
+   float_rate=search_rating.to_f 
+   float_min_price=min_price.to_f 
+  float_max_price=max_price.to_f 
   where(['name LIKE ? AND avg_rating >= ? AND avg_price >= ? AND avg_price <= ?', "%#{search_name}%", float_rate, float_min_price, float_max_price])
 end
 
+ def self.categories
+ @items=Item.tagged_with("booksaudible")
+ 
+ end
 
 
   private

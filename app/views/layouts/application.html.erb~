@@ -93,25 +93,25 @@
                                     <a href="http://localhost:3000/items?category=moviesmusicgames">Movies, Music & Games</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=electronicscomputers">Electronics & Computer</a>
+                                    <a href="http://localhost:3000/items?categories=electronicscomputers">Electronics & Computer</a>
                                 </li>
                                 <li>
-                                    <a  href="http://localhost:3000/items?category=homegardentools">Home, Garden & Tools</a>
+                                    <a  href="http://localhost:3000/items?categories=homegardentools">Home, Garden & Tools</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=beautyhealthgrocery">Beauty, Health & Grocery</a>
+                                    <a href="http://localhost:3000/items?categories=beautyhealthgrocery">Beauty, Health & Grocery</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=toyskidsbaby">Toys, Kids & Baby</a>
+                                    <a href="http://localhost:3000/items?categories=toyskidsbaby">Toys, Kids & Baby</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=clothingshoesjewelry">Clothing, Shoes & Jewelry</a>
+                                    <a href="http://localhost:3000/items?categories=clothingshoesjewelry">Clothing, Shoes & Jewelry</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=sportsoutdoors">Sports & Outdoors</a>
+                                    <a href="http://localhost:3000/items?categories=sportsoutdoors">Sports & Outdoors</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=automotiveindustrial">Automotive & Industrial</a>
+                                    <a href="http://localhost:3000/items?categories=automotiveindustrial">Automotive & Industrial</a>
                                 </li>
                             </ul>
                         </li>

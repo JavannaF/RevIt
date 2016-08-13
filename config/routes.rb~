@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get  'signup' => 'users#new'
   get  'signupowners' => 'owners#new'
-  get  'categories' => 'items#categories'
+  get  'categories' => 'items#categorie'
   get 'home' => 'static_pages#home'
   get 'search/search'
   get 'avd_search'=>'search'
