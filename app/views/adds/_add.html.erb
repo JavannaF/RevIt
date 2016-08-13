@@ -9,6 +9,7 @@
     <% if current_owner?(add.owner) %>
       <%= link_to "delete", add, method: :delete,
                                        data: { confirm: "You sure?" } %>
+      <%= link_to "update", edit_add_path(add) %>
     <% end %>
   </span>
 </li>

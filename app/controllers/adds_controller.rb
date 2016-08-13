@@ -1,7 +1,9 @@
 class AddsController < ApplicationController
   before_action :logged_in_owner, only: [:create, :destroy, :update]
-  before_action :correct_owner,   only: :destroy
-
+  before_action :correct_owner,   only: [:destroy, :update]
+  def new
+    @add = Add.new
+  end
 
   def create
     @add = current_owner.adds.build(add_params)
@@ -19,6 +21,14 @@ class AddsController < ApplicationController
     flash[:success] = "Add deleted"
     redirect_to request.referrer || root_url
 
+  end
+
+  def update
+    if @add.update_attributes(add_params)
+      redirect_to current_owner
+    else
+      render 'edit'
+    end
   end
 
   private
