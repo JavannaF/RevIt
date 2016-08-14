@@ -57,6 +57,6 @@ group :development do
 
   #login fb
   gem 'omniauth'
-
+  gem 'omniauth-facebook'
 end
 

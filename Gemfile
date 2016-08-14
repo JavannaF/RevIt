@@ -58,5 +58,8 @@ group :development do
   #login fb
   gem 'omniauth'
   gem 'omniauth-facebook'
+  
+  #add-as-as-taggable per le categorie
+  gem 'acts-as-taggable-on', '~> 4.0'
 end
 
