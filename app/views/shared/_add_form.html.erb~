@@ -5,15 +5,12 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
     <%= f.label :price %><br>
+<<<<<<< HEAD
     <%= f.text_field :price %>
-     <%= f.label :tag_list %><br>
- <pre style="width:500px">
-  <%= f.check_box :tag_list, { :multiple => true }, 'booksaudible', nil%> Books & Audible         <%= f.check_box :tag_list, { :multiple => true }, 'beautyhealtsgrocery', nil%> Beauties, Helats & Grocery
-  <%= f.check_box :tag_list, { :multiple => true }, 'moviesmusicgames', nil%> Movies, Music & Games   <%= f.check_box :tag_list, { :multiple => true }, 'toyskidsbaby', nil%> Toys, Kids & Baby
-  <%= f.check_box :tag_list, { :multiple => true }, 'electronicsgames', nil%> Electronics & Games     <%= f.check_box :tag_list, { :multiple => true }, 'clothingshoesjewelry', nil%> Clothing, Shoes & Jewelry
-  <%= f.check_box :tag_list, { :multiple => true }, 'homegardentools', nil%> Home, Garden & Tool     <%= f.check_box :tag_list, { :multiple => true }, 'sportsoutdoors', nil%> Sports & Outdoors 
-  <%= f.check_box :tag_list, { :multiple => true }, 'automotiveindustrial', nil%> Automotive & Industrial     </pre>
-
+    
+=======
+    <%= f.text_area :price %>
+>>>>>>> master
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">

@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id])
   end
 
+  
   private
 
     # Confirms a logged-in user.

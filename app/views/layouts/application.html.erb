@@ -31,7 +31,7 @@
     <![endif]-->
 </head>
 <body>
-    <% if !logged_in? %>
+    <% if !logged_in? && !logged_in_owner? %>
     <!-- Header -->
     <div class="container">
         <div class="row">
@@ -62,6 +62,44 @@
         </div>
     </div>
     <% else %>
+    <% if logged_in_owner? %>
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>RevIt</h1>
+            </div>
+        
+                       
+            <div class="col-sm-4">
+                <div class="btn-group open">
+                    <%= link_to "Log out", logoutowners_path, method: :delete, class: "btn btn-primary" %>
+                </div>
+            </div>
+
+                        
+            </div>
+        </div>
+    </div>
+    <% else if logged_in? %>
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>RevIt</h1>
+            </div>
+        
+                       
+            <div class="col-sm-4">
+                <div class="btn-group open">
+                    <%= link_to "Log out", logout_path, method: :delete, class: "btn btn-primary" %>
+                </div>
+            </div>
+
+                        
+            </div>
+        </div>
+    </div>
+    <% end %>
+    <% end %>
     <% end %>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar" role="navigation">
