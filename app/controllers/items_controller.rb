@@ -8,11 +8,19 @@ class ItemsController < ApplicationController
   
   def index
     if (params[:category])
-      @items=Item.tagged_with(params[:category])
-    
+      @items=Item.tagged_with(params[:category])    
     else
-    if (params[:name] || params[:avg_rating]|| params[:min_price] || params[:max_price])
-      @items = Item.search(params[:name], params[:avg_rating], params[:min_price], params[:max_price]).all
+    if (params[:name] || params[:avg_rating]|| params[:min_price] || params[:max_price]||params[:category_search])
+       @items2 = Item.search(params[:name], params[:avg_rating], params[:min_price], params[:max_price], params[:category_search]).all
+       if(params[:category_search])
+         category_search_var=params[:category_search].strip.downcase.delete("^a-z")
+         @items=[]
+         @items2.each do |item|
+         if item.tag_list.include?("sportsoutdoors")
+           @items.push(item) 
+        end     
+       end
+      end
     else
   @items=Item.all
   end
@@ -73,7 +81,7 @@ class ItemsController < ApplicationController
     def set_item
       @item = Item.find(params[:id])
     end
-
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:name, :avg_price, :avg_rating, :description, :picture, :tag_list)

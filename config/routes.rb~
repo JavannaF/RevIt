@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'avd_search'=>'search'
 
 
-
+  get 'tags/:tag', to: 'items#index', as: :tag
 
   get 'help' => 'static_pages#help'
   get 'login' => 'sessions#new'
