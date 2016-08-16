@@ -8,14 +8,14 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = Review.all.paginate(page: params[:page]).per_page(10)
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
     @user = User.find(params[:id])
-    @reviews = @user.review.paginate(page: params[:page])
+    @reviews = @user.review.paginate(page: params[:page]).per_page(10)
   end
 
   # GET /reviews/new
@@ -43,9 +43,14 @@ class ReviewsController < ApplicationController
   #  end
  # end
   def create
-    @item = Item.find(params[:item_id])
-    @review = @item.reviews.create(review_params)
-    redirect_to item_path(@item)
+    id_item = params[:item_id]
+		@item = Item.find(id_item)
+		id_user = params[:review][:user_id]
+		puts(id_user)
+		@user = User.find(id_user)
+		@review = @item.reviews.create!(params[:review].permit(:comment, :price, :rating, :store))
+		flash[:notice] = "A review has from #{@user.name} been successfully added to #{@item.title}."
+		redirect_to item_path(@item)
   end
 
 

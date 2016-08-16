@@ -7,8 +7,9 @@ class ItemsController < ApplicationController
   # GET /items.json
   
   def index
-    if (params[:category])
-      @items=Item.tagged_with(params[:category])    
+     
+   if (params[:category])
+      @items=Item.tagged_with(params[:category]).paginate(page:params[:page]).per_page(10)    
     else
     if (params[:name] || params[:avg_rating]|| params[:min_price] || params[:max_price]||params[:category_search])
        @items2 = Item.search(params[:name], params[:avg_rating], params[:min_price], params[:max_price], params[:category_search]).all
@@ -22,10 +23,11 @@ class ItemsController < ApplicationController
        end
       end
     else
-  @items=Item.all
+  @items=Item.all.paginate(page:params[:page]).per_page(10)
   end
   end
   end
+    
   # GET /items/1
   # GET /items/1.json
   def show

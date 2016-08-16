@@ -27,3 +27,6 @@
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
 </p>
+<span class="timestamp">
+    Posted <%= time_ago_in_words(review.created_at) %> ago.
+  </span>
