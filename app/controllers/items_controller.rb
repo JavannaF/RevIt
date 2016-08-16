@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
          category_search_var=params[:category_search].strip.downcase.delete("^a-z")
          @items=[]
          @items2.each do |item|
-         if item.tag_list.include?("sportsoutdoors")
+         if item.tag_list.include?(category_search_var)
            @items.push(item) 
         end     
        end
