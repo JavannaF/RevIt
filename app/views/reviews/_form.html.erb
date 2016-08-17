@@ -1,6 +1,7 @@
 <div class="container">
-        
-        <%= form_for(@review) do |f| %>
+        <%= @item = Item.find(params[:id]) %>
+        <%= @review = @item.reviews.new %>
+        <%= form_for([@item,@review]) do |f| %>
             <% if @review.errors.any? %>
                 <div id="error_explanation">
                     <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>

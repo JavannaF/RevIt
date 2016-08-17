@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
- 
+  
   
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:create, :destroy]
@@ -43,14 +43,16 @@ class ReviewsController < ApplicationController
   #  end
  # end
   def create
-    id_item = params[:item_id]
-		@item = Item.find(id_item)
-		id_user = params[:review][:user_id]
-		puts(id_user)
-		@user = User.find(id_user)
-		@review = @item.reviews.create!(params[:review].permit(:comment, :price, :rating, :store))
-		flash[:notice] = "A review has from #{@user.name} been successfully added to #{@item.title}."
-		redirect_to item_path(@item)
+    @item = Item.find(params[:item_id])
+    @review = @item.reviews.build(review_params)
+    @review.user_id = current_user.id
+    if @review.save
+      flash[:success] = "review created!"
+      redirect_to @item
+    else
+      flash[:error] = "review was not posted!"
+      redirect_to @item
+    end
   end
 
 
@@ -86,5 +88,11 @@ class ReviewsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
       params.require(:review).permit(:comment, :price, :rating, :store)
+    end
+
+    # Confirms the correct user.
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 end

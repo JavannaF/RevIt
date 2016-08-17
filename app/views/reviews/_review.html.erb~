@@ -22,3 +22,11 @@
     <strong>Store:</strong>
     <%= review.store %>
   </p>
+ <p>
+  <%= link_to 'Destroy review', [review.item, review],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+<span class="timestamp">
+    Posted <%= time_ago_in_words(review.created_at) %> ago.
+  </span>
