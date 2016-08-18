@@ -1,3 +1,5 @@
+<div class="container">
+
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -11,32 +13,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :avg_price %><br>
-    <%= f.text_field :avg_price %>
-  </div>
-  <div class="field">
-    <%= f.label :avg_rating %><br>
-    <%= f.text_field :avg_rating %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-   <%= f.label :tag_list %><br>
- <pre style="width:500px">
-  <%= f.check_box :tag_list, { :multiple => true }, 'booksaudible', nil%> Books & Audible         <%= f.check_box :tag_list, { :multiple => true }, 'beautyhealtsgrocery', nil%> Beauties, Helats & Grocery
-  <%= f.check_box :tag_list, { :multiple => true }, 'moviesmusicgames', nil%> Movies, Music & Games   <%= f.check_box :tag_list, { :multiple => true }, 'toyskidsbaby', nil%> Toys, Kids & Baby
-  <%= f.check_box :tag_list, { :multiple => true }, 'electronicsgames', nil%> Electronics & Games     <%= f.check_box :tag_list, { :multiple => true }, 'clothingshoesjewelry', nil%> Clothing, Shoes & Jewelry
-  <%= f.check_box :tag_list, { :multiple => true }, 'homegardentools', nil%> Home, Garden & Tool     <%= f.check_box :tag_list, { :multiple => true }, 'sportsoutdoors', nil%> Sports & Outdoors 
-  <%= f.check_box :tag_list, { :multiple => true }, 'automotiveindustrial', nil%> Automotive & Industrial     </pre>
+    <%= render 'shared/error_messages',object: f.object %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  
+  
+    <%= f.label :avg_price %>
+    <%= f.text_field :avg_price, class: 'form-control' %>
+  
+  
+    <%= f.label :avg_rating %>
+    <%= f.text_field :avg_rating, class: 'form-control' %>
+  
+  
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  
+   <%= f.label :tag_list %>
+   <pre style="width:500px">
+   <%= f.check_box :tag_list, { :multiple => true }, 'booksaudible', nil%> Books & Audible         <%= f.check_box :tag_list, { :multiple => true }, 'beautyhealtsgrocery', nil%> Beauties, Helats & Grocery
+   <%= f.check_box :tag_list, { :multiple => true }, 'moviesmusicgames', nil%> Movies, Music & Games   <%= f.check_box :tag_list, { :multiple => true }, 'toyskidsbaby', nil%> Toys, Kids & Baby
+   <%= f.check_box :tag_list, { :multiple => true }, 'electronicsgames', nil%> Electronics & Games     <%= f.check_box :tag_list, { :multiple => true }, 'clothingshoesjewelry', nil%> Clothing, Shoes & Jewelry
+   <%= f.check_box :tag_list, { :multiple => true }, 'homegardentools', nil%> Home, Garden & Tool     <%= f.check_box :tag_list, { :multiple => true }, 'sportsoutdoors', nil%> Sports & Outdoors 
+   <%= f.check_box :tag_list, { :multiple => true }, 'automotiveindustrial', nil%> Automotive & Industrial     
+   </pre>
 
   
 
-    <%= f.submit %>
-  </div>
+    <%= f.submit "Create Item", class: "btn btn-primary" %>
+  
+</div>
 <% end %>

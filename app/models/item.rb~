@@ -3,8 +3,11 @@ class Item < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
-
+  validates :taglist, presence: true
   validates :user_id, presence: true
+  validates :name, presence: true
+  validates :avg_price, presence: true
+  validates :avg_rating, presence: true
   validate  :picture_size
   
 
@@ -12,7 +15,7 @@ class Item < ActiveRecord::Base
   acts_as_taggable_on :categories
 
 
-def self.search(search_name, search_rating, min_price, max_price, category_search) 
+def self.search(search_name, search_rating, min_price, max_price) 
   return Item.all unless search_name.present? || search_rating.present? || min_price.present? || max_price.present?
    float_rate=search_rating.to_f 
    float_min_price=min_price.to_f 
@@ -28,5 +31,4 @@ end
         errors.add(:picture, "should be less than 5MB")
       end
     end
-end
 end
