@@ -29,7 +29,7 @@ end
 users = User.order(:created_at).take(6)
 50.times do
   name = Faker::Lorem.sentence(5)
-  users.each { |user| user.items.create!(name: name, avg_rating: 3, avg_price: 3) }
+  users.each { |user| user.items.create!(name: name, avg_rating: 3, avg_price: 3, tag_list:"booksaudible") }
 end
 
 Owner.create!(name:  "Example Owner",
