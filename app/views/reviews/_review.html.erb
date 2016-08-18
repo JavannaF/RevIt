@@ -1,32 +1,39 @@
-<p>
-    <strong>User:</strong>
-    <%= review.user %>
-  </p>
+<div class="well">
 
-  <p>
-    <strong>Comment:</strong>
-    <%= review.comment %>
-  </p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <%= review.user.name %>
+                            <span class="pull-right">
+                                <strong>Price:</strong><%= review.price %> <strong>Store:</strong><%= review.store %>
+                                <p>Posted <%= time_ago_in_words(review.created_at) %> ago.</p>
+                            </span>
+                            <p><%= review.comment %></p>
+                            
+                        </div>
+                    </div>
 
-  <p>
-    <strong>Price:</strong>
-    <%= review.price %>
-  </p>
+                    <hr>
+                    <p>
+                            <%= link_to 'Destroy review', [review.item, review],
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %>
+                    </p>
+</div>
+<!-- jQuery -->
+    <script src="app/assets/javascripts/jquery.js"></script>
 
-  <p>
-    <strong>Rating:</strong>
-    <%= review.rating %>
-  </p>
-
-  <p>
-    <strong>Store:</strong>
-    <%= review.store %>
-  </p>
- <p>
-  <%= link_to 'Destroy review', [review.item, review],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
-<span class="timestamp">
-    Posted <%= time_ago_in_words(review.created_at) %> ago.
-  </span>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="app/assets/javascripts/bootstrap.min.js"></script>
+  
+  
+  
+  
+  
+  
+  
+  

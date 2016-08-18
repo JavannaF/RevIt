@@ -1,6 +1,8 @@
-<div class="container">
-        
-        <%= form_for(@review) do |f| %>
+<div class="well">
+
+        <%= @item = Item.find(params[:id]) %>
+        <%= @review = @item.reviews.new %>
+        <%= form_for([@item,@review]) do |f| %>
             <% if @review.errors.any? %>
                 <div id="error_explanation">
                     <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -12,21 +14,21 @@
                     </ul>
                 </div>
             <% end %>
-        
-        <%= f.label :comment %>
-        <%= f.text_area :comment, class: 'form-control' %>
 
-        <%= f.label :price %>
-        <%= f.text_field :price, class: 'form-control' %>
+        <div class="row">
+            <div class="col-md-12">
+                <%= f.label :rating %>
+                <%= f.text_field :rating, class: 'rating' %>
+                <span class="pull-right">
+                    <strong>Price:</strong><%= f.text_field :price, class: 'form-control' %> <strong>Store:</strong><%= f.text_field :store, class: 'form-control' %>
+                                
+                </span>
+                <%= f.label :comment %>
+                <%= f.text_area :comment, class: 'form-control' %>
+            </div>
+        </div>
 
-        <%= f.label :rating %>
-        <%= f.text_field :rating, class: 'rating' %>
-        
-        <%= f.label :store %>
-        <%= f.text_field :store, class: 'form-control' %>
-    
+        <hr>
         <%= f.submit "Add Review", class: "btn btn-primary" %>
         <% end %>
-            
-    </div>
-
+</div>
