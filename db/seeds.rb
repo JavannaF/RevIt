@@ -47,11 +47,13 @@ Owner.create!(name:  "Example Owner",
   email = "exampleee-#{n+1}@railstutorial.org"
   website = name
   description = name
+  address = "velletri"
   password = "password"
   Owner.create!(name:  name,
                email: email,
                website: website,
-               description: description,  
+               description: description,
+               address: address,  
                password:              password,
                password_confirmation: password,
                activated: true,

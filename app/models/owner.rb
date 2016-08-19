@@ -1,6 +1,8 @@
 class Owner < ActiveRecord::Base
   has_many :adds , dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
   before_save   :downcase_email
   before_create :create_activation_digest
 

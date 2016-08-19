@@ -4,6 +4,8 @@
   <%= @owner.name %>
 </h1>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@owner.latitude}%2C#{@owner.longitude}" %>
+
 <div class="col-md-8">
     <% if @owner.adds.any? %>
       <h3>Adds (<%= @owner.adds.count %>)</h3>

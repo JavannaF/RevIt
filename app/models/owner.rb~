@@ -56,6 +56,10 @@ class Owner < ActiveRecord::Base
     UserMailer.account_activation(self).deliver_now
   end
 
+  def feed
+    Add.where("owner_id = ?", id)
+  end
+
   
   private
 

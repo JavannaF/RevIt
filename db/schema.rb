@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813103633) do
+ActiveRecord::Schema.define(version: 20160819103943) do
 
   create_table "adds", force: :cascade do |t|
     t.string   "name"
@@ -60,6 +60,9 @@ ActiveRecord::Schema.define(version: 20160813103633) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "owners", ["email"], name: "index_owners_on_email", unique: true

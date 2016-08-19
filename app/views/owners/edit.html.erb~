@@ -12,10 +12,13 @@
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :website %>
-      <%= f.website_field :website, class: 'form-control' %>
+      <%= f.text_field :website, class: 'form-control' %>
 
       <%= f.label :description %>
-      <%= f.description_field :description, class: 'form-control' %>
+      <%= f.text_field :description, class: 'form-control' %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>

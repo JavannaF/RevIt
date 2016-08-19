@@ -61,5 +61,8 @@ group :development do
   
   #add-as-as-taggable per le categorie
   gem 'acts-as-taggable-on', '~> 4.0'
+
+  #geocoder for maps
+  gem 'geocoder'
 end
 
