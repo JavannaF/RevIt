@@ -48,6 +48,8 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     if @review.save
       flash[:success] = "review created!"
+      lower_price(@item)
+      media_stellina(@item)
       redirect_to @item
     else
       flash[:error] = "review was not posted!"
@@ -76,6 +78,8 @@ class ReviewsController < ApplicationController
     @item = Item.find(params[:item_id])
     @reviews = @item.reviews.find(params[:id])
     @reviews.destroy
+    lower_price(@item)
+    media_stellina(@item)
     redirect_to item_path(@item)
   end
 
@@ -92,7 +96,20 @@ class ReviewsController < ApplicationController
 
     # Confirms the correct user.
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find_by id: @reviews.user.id
       redirect_to(root_url) unless current_user?(@user)
     end
+    
+    # Minimum
+    def lower_price(item)
+        item.avg_price = item.reviews.minimum(:price)
+        item.save
+    end
+    
+    #AVG Rating
+    def media_stellina(item)
+        item.avg_rating = item.reviews.average(:rating)
+        item.save
+    end
+    
 end

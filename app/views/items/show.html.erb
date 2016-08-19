@@ -12,8 +12,9 @@
                         <p><%= @item.description %></p>
                     </div>
                     <div class="ratings">
-                        <p class="pull-right"><%= @item.reviews.count %></p>
+                        <p class="pull-right"><%= @item.reviews.count %> Reviews</p>
                         <p>
+                            <h4 class="pull-left"><%= @item.avg_rating %></h4>
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
