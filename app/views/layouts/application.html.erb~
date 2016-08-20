@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<% if flash[:success] %>
-    <div class="success"><%= flash[:success] %></div>
-  <% end %>
-<% if flash[:error] %>
-    <div class="error"><%= flash[:error] %></div>
-  <% end %>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

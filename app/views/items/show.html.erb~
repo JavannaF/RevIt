@@ -1,33 +1,61 @@
-<p id="notice"><%= notice %></p>
+<!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
 
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
+                <div class="thumbnail">
+                    <img class="img-responsive" src="http://placehold.it/800x300" alt="">
+                    <div class="caption-full">
+                        <h4 class="pull-right"><%= @item.avg_price %></h4>
+                        
+                        <h4><a href="#"><%= @item.name %></a></h4>
+                        <p><%= @item.description %></p>
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-right"><%= @item.reviews.count %> Reviews</p>
+                        <p>
+                            <h4 class="pull-left"><%= @item.avg_rating %></h4>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            4.0 stars
+                        </p>
+                    </div>
+                </div>
 
-<p>
-  <strong>Avg price:</strong>
-  <%= @item.avg_price %>
-</p>
+                <div class="well">
+                    
+                    <div class="text-left">
+                        <h2>Reviews</h2>
+                    </div>
 
-<p>
-  <strong>Avg rating:</strong>
-  <%= @item.avg_rating %>
-</p>
+                    <hr>
+                    
+                    <% if !@reviews.present? %>
+                    <p>There are no reviews.</p> 
+                    <% end %>
+                    
+                    <%= render @item.reviews %>
+                    
+                    <%= render 'reviews/form' %>
+                    <%= link_to 'Edit', edit_item_path(@item) %> |
+                    <%= link_to 'Back', items_path %>
+                    
+                </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
+            </div>
 
-<h2>Comments</h2>
-  <%= render @item.reviews %>
-    
+        </div>
 
-  
+    </div>
+<!-- /.container -->
 
 
-<h2>Add a comment:</h2>
-  <%= render 'reviews/form' %>
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+
+
+
+
+
+

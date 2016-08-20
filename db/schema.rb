@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819103943) do
+ActiveRecord::Schema.define(version: 20160820134350) do
 
   create_table "adds", force: :cascade do |t|
     t.string   "name"
@@ -40,9 +40,12 @@ ActiveRecord::Schema.define(version: 20160819103943) do
     t.float    "avg_rating"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "picture"
+    t.string   "store_location"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "items", ["user_id", "created_at"], name: "index_items_on_user_id_and_created_at"
@@ -74,9 +77,12 @@ ActiveRecord::Schema.define(version: 20160819103943) do
     t.float    "rating"
     t.string   "store"
     t.integer  "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.datetime "update_at"
+    t.string   "store_location"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "reviews", ["item_id"], name: "index_reviews_on_item_id"

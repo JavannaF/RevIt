@@ -9,7 +9,7 @@
                             <span class="glyphicon glyphicon-star-empty"></span>
                             <%= review.user.name %>
                             <span class="pull-right">
-                                <strong>Price:</strong><%= review.price %> <strong>Store:</strong><%= review.store %>
+                                <strong>Price:</strong><%= review.price %> <strong>Store:</strong><%= review.store %><strong>Store Location:</strong><%= review.store_location %>
                                 <p>Posted <%= time_ago_in_words(review.created_at) %> ago.</p>
                             </span>
                             <p><%= review.comment %></p>

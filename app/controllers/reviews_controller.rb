@@ -50,6 +50,7 @@ class ReviewsController < ApplicationController
       flash[:success] = "review created!"
       lower_price(@item)
       media_stellina(@item)
+      best_price_location(@item)
       redirect_to @item
     else
       flash[:error] = "review was not posted!"
@@ -80,6 +81,7 @@ class ReviewsController < ApplicationController
     @reviews.destroy
     lower_price(@item)
     media_stellina(@item)
+    best_price_location(@item)
     redirect_to item_path(@item)
   end
 
@@ -91,12 +93,13 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:comment, :price, :rating, :store)
+      params.require(:review).permit(:comment, :price, :rating, :store, :store_location)
     end
 
     # Confirms the correct user.
     def correct_user
-      @user = User.find_by id: @reviews.user.id
+      
+      @user = User.find_by id: @review.user.id
       redirect_to(root_url) unless current_user?(@user)
     end
     
@@ -111,5 +114,12 @@ class ReviewsController < ApplicationController
         item.avg_rating = item.reviews.average(:rating)
         item.save
     end
-    
+
+    #location
+    def best_price_location(item)
+      item.store_location = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:store_location)[0]
+      item.latitude = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:latitude)[0]
+      item.longitude = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:longitude)[0]
+      item.save
+    end
 end

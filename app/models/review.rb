@@ -1,6 +1,8 @@
 class Review < ActiveRecord::Base
   belongs_to :item
   belongs_to :user
+  geocoded_by :store_location
+  after_validation :geocode, :if => :store_location_changed?
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :comment, presence: true, length: {maximum: 200}
