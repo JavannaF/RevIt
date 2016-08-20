@@ -47,8 +47,8 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    
-    params[:item][:tag_list] = params[:item][:tag_list].join(',')
+    if(params[:item][:tag_list]!=nil)
+    params[:item][:tag_list] = params[:item][:tag_list].join(',') end
     @item = current_user.items.build(item_params)
     if @item.save
       flash[:success] = "item created!"

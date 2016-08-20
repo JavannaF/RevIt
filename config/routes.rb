@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'feedbacks/create'
+
   get 'owners/new'
 
   get 'password_resets/new'
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'signout'
   
+  resources :feedbacks
   resources :owners
   resources :users
   resources :account_activations, only: [:edit]
