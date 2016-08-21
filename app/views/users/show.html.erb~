@@ -3,16 +3,16 @@
 <% provide(:title, @user.name) %>
 <div>
 <% if @user.passive_feedbacks.empty? %>
+<% if current_user!=nil &&  @user.id!= current_user.id %>
    <%= form_tag(feedbacks_create_path, method: :post) do%>
       <%= hidden_field_tag 'receiver_id', @user.id %>
       <%= hidden_field_tag 'value', false %>
      <%= submit_tag '-' %><%end%>
       Feedback: 0
-   
    <%= form_tag(feedbacks_create_path, method: :post)%>
       <%= hidden_field_tag 'receiver_id', @user.id %>
       <%= hidden_field_tag 'value', true%>
-     <%= submit_tag '+' %><%else%>
+     <%= submit_tag '+' %><%else%>Feedback:0<%end%><%else%>
 <% if current_user!=nil%>
 <% if @user.id!= current_user.id && !@user.passive_feedbacks.exists?(['giver_id LIKE ?',current_user.id])%>
 <%= form_tag(feedbacks_create_path, method: :post) do%>
