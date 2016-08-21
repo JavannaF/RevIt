@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
   				foreign_key: "giver_id",
   				dependent: :destroy
   has_many :feedbacks, through: :active_feedbacks, source: :receiver
+  #GIVER DELLE VALUTAZIONI
+  has_many :active_evaluations, class_name: "Evaluation",
+  				foreign_key: "user_id",
+  				dependent: :destroy
+  has_many :evaluations, through: :active_evaluations, source: :evaluated
 
   has_many :reviews, dependent: :destroy
   has_many :authorizations

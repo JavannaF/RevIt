@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   post 'feedbacks/create'
-
+  post 'evaluations/create'
   get 'owners/new'
 
   get 'password_resets/new'

@@ -1,0 +1,4 @@
+class Evaluation < ActiveRecord::Base
+  belongs_to :giver, class_name: 'User', dependent: :destroy
+  belongs_to :receiver, class_name: 'Owner', dependent: :destroy
+end
