@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<% if flash[:success] %>
+    <div class="success"><%= flash[:success] %></div>
+  <% end %>
+<% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% end %>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -171,11 +176,11 @@
                         </li>
                         
                         <li>
-                        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-                        <%= text_field_tag :search, params[:search], placeholder: "Search User" %>
+                        <%= form_tag(search_index_path, :method => "get", id: "search-form") do %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Search User or Owner" %>
                         <%= submit_tag "Search" %>
                         <% end %>
-                        <%= link_to "AdvancedSearch", search_search_path%></li>
+                        <%= link_to "AdvancedSearch", items_search_path%></li>
                         <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
                 </ul>
                 

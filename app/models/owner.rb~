@@ -3,7 +3,7 @@ class Owner < ActiveRecord::Base
   has_many :passive_evaluations, class_name: "Evaluation",
   				foreign_key: "owner_id",
 				dependent: :destroy
-  has_many :evaluater, through: :passive_evaluations, source: :evaluater
+  has_many :evaluaters, through: :passive_evaluations, source: :evaluater
   #
 
   has_many :adds , dependent: :destroy
@@ -68,7 +68,10 @@ class Owner < ActiveRecord::Base
   def feed
     Add.where("owner_id = ?", id)
   end
-
+  def self.search(search_user)
+      where("name LIKE ?", "%#{search_user}%")
+  
+  end
   
   private
 

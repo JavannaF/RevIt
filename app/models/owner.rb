@@ -68,7 +68,10 @@ class Owner < ActiveRecord::Base
   def feed
     Add.where("owner_id = ?", id)
   end
-
+  def self.search(search_owner)
+      where("name LIKE ?", "%#{search_owner}%")
+  
+  end
   
   private
 
