@@ -1,4 +1,14 @@
 class User < ActiveRecord::Base
+  #RECEIVER DEI FEEDBACKS
+  has_many :passive_feedbacks, class_name: "Feedback",
+  				foreign_key: "receiver_id",
+				dependent: :destroy
+  has_many :givers, through: :passive_feedbacks, source: :giver
+  #GIVER DEI FEEDBACKS
+  has_many :active_feedbacks, class_name: "Feedback",
+  				foreign_key: "giver_id",
+  				dependent: :destroy
+  has_many :feedbacks, through: :active_feedbacks, source: :receiver
 
   has_many :reviews, dependent: :destroy
   has_many :authorizations
