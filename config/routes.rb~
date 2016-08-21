@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post 'feedbacks/create'
   post 'evaluations/create'
   get 'owners/new'
-
+  get 'search/index'
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get  'signupowners' => 'owners#new'
   get  'categories' => 'items#categories'
   get 'home' => 'static_pages#home'
-  get 'search/search'
+  get 'items/search'
   get 'avd_search'=>'search'
 
 
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'signout' => 'sessions#destroy', as: 'signout'
   
   resources :feedbacks
+
   resources :owners
   resources :users
   resources :account_activations, only: [:edit]
