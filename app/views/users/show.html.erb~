@@ -12,6 +12,7 @@
       <%= hidden_field_tag 'receiver_id', @user.id %>
       <%= hidden_field_tag 'value', true%>
      <%= submit_tag '+' %><%else%>
+<% if current_user!=nil%>
 <% if @user.id!= current_user.id && !@user.passive_feedbacks.exists?(['giver_id LIKE ?',current_user.id])%>
 <%= form_tag(feedbacks_create_path, method: :post) do%>
       <%= hidden_field_tag 'receiver_id', @user.id %>
@@ -22,8 +23,8 @@
       <%= hidden_field_tag 'receiver_id', @user.id %>
       <%= hidden_field_tag 'value', true%>
      <%= submit_tag '+' %>
-<%else%>Feedback: %= @user.passive_feedbacks.where(value: true).count- @user.passive_feedbacks.where(value: false).count %>
-<%end%><%end%>
+<%else%>Feedback: <%= @user.passive_feedbacks.where(value: true).count- @user.passive_feedbacks.where(value: false).count %>
+<%end%><%end%><%else%>Feedback: <%= @user.passive_feedbacks.where(value: true).count- @user.passive_feedbacks.where(value: false).count %><%end%>
 </div>
   <div class="col-md-8">
     <% if @user.items.any? %>
