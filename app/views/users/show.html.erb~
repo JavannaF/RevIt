@@ -8,6 +8,7 @@
       <%= hidden_field_tag 'value', false %>
      <%= submit_tag '-' %><%end%>
       Feedback: 0
+   
    <%= form_tag(feedbacks_create_path, method: :post)%>
       <%= hidden_field_tag 'receiver_id', @user.id %>
       <%= hidden_field_tag 'value', true%>
@@ -24,7 +25,7 @@
       <%= hidden_field_tag 'value', true%>
      <%= submit_tag '+' %>
 <%else%>Feedback: <%= @user.passive_feedbacks.where(value: true).count- @user.passive_feedbacks.where(value: false).count %>
-<%end%><%end%><%else%>Feedback: <%= @user.passive_feedbacks.where(value: true).count- @user.passive_feedbacks.where(value: false).count %><%end%>
+<%end%><%else%>Feedback: <%= @user.passive_feedbacks.where(value: true).count- @user.passive_feedbacks.where(value: false).count %><%end%><%end%>
 </div>
   <div class="col-md-8">
     <% if @user.items.any? %>
