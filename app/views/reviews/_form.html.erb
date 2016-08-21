@@ -17,8 +17,11 @@
 
         <div class="row">
             <div class="col-md-12">
-                <%= f.label :rating %>
-                <%= f.text_field :rating, class: 'rating' %>
+                
+                <div id="rating-form">
+                    <label>Rating</label>
+                </div>
+                
                 <span class="pull-right">
                     <strong>Price:</strong><%= f.text_field :price, class: 'form-control' %> <strong>Store:</strong><%= f.text_field :store, class: 'form-control' %><strong>Store Location:</strong><%= f.text_field :store_location, class: 'form-control' %>
                                 
@@ -32,3 +35,10 @@
         <%= f.submit "Add Review", class: "btn btn-primary" %>
         <% end %>
 </div>
+
+<script>
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
+</script>

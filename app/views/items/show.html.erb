@@ -6,25 +6,23 @@
                 <div class="thumbnail">
                     <img class="img-responsive" src="http://placehold.it/800x300" alt="">
                     <div class="caption-full">
-                        <h4 class="pull-right"><%= @item.avg_price %></h4>
+                        <h4 class="pull-right">Best Price: $ <%= @item.avg_price %></h4>
                         
                         <h4><a href="#"><%= @item.name %></a></h4>
                         <p><%= @item.description %></p>
-                    </div>
-                    <div class="ratings">
+                    
                         <p class="pull-right"><%= @item.reviews.count %> Reviews</p>
-                        <p>
-                            <h4 class="pull-left"><%= @item.avg_rating %></h4>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            4.0 stars
-                        </p>
                     </div>
+
                 </div>
-                <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@item.latitude}%2C#{@item.longitude}" %>
+                
+                <div class="review-rating" data-score="<%= @item.avg_rating %>"></div> <%= @item.avg_rating %> stars
+               
+                <div id="map">
+                    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@item.latitude}%2C#{@item.longitude}" %>
+                    
+                </div>
+                
                 <div class="well">
                     
                     <div class="text-left">
@@ -51,6 +49,17 @@
 
     </div>
 <!-- /.container -->
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
 
 
 
