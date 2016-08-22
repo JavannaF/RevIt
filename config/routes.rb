@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   get 'signout' => 'sessions#destroy', as: 'signout'
   
   resources :feedbacks
-
+  resources :contacts
   resources :owners
   resources :users
   resources :account_activations, only: [:edit]
