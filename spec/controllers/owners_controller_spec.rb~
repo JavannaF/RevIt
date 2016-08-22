@@ -1,23 +1,24 @@
 require 'rails_helper'
-require 'omniauth'
-require 'omniauth-facebook'
-RSpec.describe UsersController, type: :controller do
-   before :each do
-     @user = FactoryGirl.create(:user)
-     sign_in @user
+require 'geocoder'
+require "geocoder/railtie"
+Geocoder::Railtie.insert
+RSpec.describe OwnersController, type: :controller do
+  before :each do
+     @owner = FactoryGirl.create(:owner)
+     sign_in @owner
    end
-   
+
   describe 'PUT update' do
       
       context "valid attributes" do
         it "located the requested @user" do
-          put :update, id: @user, user: { username: @user.username }
-          expect(assigns(:user)).to eq(@user)      
+          put :update, id: @owner, owner: { name: @owner.name }
+          expect(assigns(:owner)).to eq(@owner)      
         end
       
         it "changes @user's attributes" do
-          put :update, id: @user, user: { username: "Larry" }
-          @user.save!
+          put :update, id: @owner, owner: { name: "Larry" }
+          @owner.save!
           assert_response :success
         end
 
@@ -25,21 +26,21 @@ RSpec.describe UsersController, type: :controller do
       
       context "invalid attributes" do
         it "locates the requested @user" do
-          put :update, id: @user, user: { username: "e"}
-          expect(assigns(:user)).to eq(@user)      
+          put :update, id: @owner, owner: { name: "e"}
+          expect(assigns(:owner)).to eq(@owner)      
         end
         
         it "does not change @user's attributes" do
-          @email = @user.email
-          put :update, id: @user, 
-            user: { username: "Larry", email: nil}
-          @user.reload
-          expect(@user.username).not_to eq("larry")
-          expect(@user.email).to eq(@email)
+          @email = @owner.email
+          put :update, id: @owner, 
+            owner: { name: "Larry", email: nil}
+          @owner.reload
+          expect(@owner.name).not_to eq("larry")
+          expect(@owner.email).to eq(@email)
         end
         
         it "re-renders the edit method" do
-          put :update, id: @user, user: {email: nil}
+          put :update, id: @owner, owner: {email: nil}
           expect(response).to render_template(:edit) 
         end
       end
@@ -61,5 +62,5 @@ RSpec.describe UsersController, type: :controller do
   def signed_in?
     return !@current_user.nil?
   end
-   
+  
 end

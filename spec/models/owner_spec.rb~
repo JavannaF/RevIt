@@ -1,0 +1,35 @@
+require 'rails_helper'
+require 'geocoder'
+require "geocoder/railtie"
+Geocoder::Railtie.insert
+
+RSpec.describe Owner, type: :model do
+ 
+
+  it "has a valid factory" do
+    assert FactoryGirl.create(:user).valid?
+  end
+  
+  it "has none to begin with" do
+    expect(Owner.count).to eq 0
+  end
+
+  it "has one after adding one" do
+    owner = FactoryGirl.create(:owner)
+    expect(owner.save!).to eq true
+  end
+  
+  it "Password too short" do
+    owner = FactoryGirl.build(:owner, 
+                 password: "dude", password_confirmation: "dude")
+    expect(owner.valid?).to eq false
+  end
+  
+  it "Username too long" do
+    owner = FactoryGirl.build(:owner, name: ""*81)
+    expect(owner.valid?).to eq false
+  end
+
+  
+    
+end

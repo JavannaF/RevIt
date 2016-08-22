@@ -8,6 +8,7 @@ class Owner < ActiveRecord::Base
 
   has_many :adds , dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
+  require 'geocoder'
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   before_save   :downcase_email
@@ -23,7 +24,7 @@ class Owner < ActiveRecord::Base
 
   has_secure_password
   validates :password, length: { minimum: 6 }
-
+  validates :password_confirmation, presence: true
   # Returns the hash digest of the given string.
   def Owner.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

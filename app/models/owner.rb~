@@ -8,6 +8,7 @@ class Owner < ActiveRecord::Base
 
   has_many :adds , dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
+  require 'geocoder'
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   before_save   :downcase_email
@@ -68,8 +69,8 @@ class Owner < ActiveRecord::Base
   def feed
     Add.where("owner_id = ?", id)
   end
-  def self.search(search_user)
-      where("name LIKE ?", "%#{search_user}%")
+  def self.search(search_owner)
+      where("name LIKE ?", "%#{search_owner}%")
   
   end
   

@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
-  validates :taglist, presence: true
+  validates :tag_list, presence: true
   validates :user_id, presence: true
   validates :name, presence: true
   validates :avg_price, presence: true
