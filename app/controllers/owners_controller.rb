@@ -1,5 +1,5 @@
 class OwnersController < ApplicationController
-  before_action :logged_in_owner, only: [:index,:edit, :update]
+  before_action :logged_in_owner, only: [:edit, :update]
   before_action :correct_owner,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 

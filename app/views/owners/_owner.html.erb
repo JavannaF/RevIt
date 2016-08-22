@@ -2,8 +2,8 @@
   <%= gravatar_for owner %>
   <%= link_to owner.name, owner %>
     <% if current_user !=nil %>
-    <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
+    <% if current_user.admin? %>
+    | <%= link_to "delete", owner, method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>
   <% end %>

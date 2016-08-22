@@ -88,7 +88,8 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      @review = Review.find(params[:id])
+      item = Item.find(params[:item_id])
+      @review = item.reviews.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -117,9 +118,9 @@ class ReviewsController < ApplicationController
 
     #location
     def best_price_location(item)
-      item.store_location = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:store_location)
-      item.latitude = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:latitude)
-      item.longitude = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:longitude)
+      item.store_location = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:store_location)[0]
+      item.latitude = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:latitude)[0]
+      item.longitude = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:longitude)[0]
       item.save
     end
 end

@@ -21,6 +21,7 @@ class PasswordResetsController < ApplicationController
     else
       render 'edit'
     end
+    
   end
   
   def create
@@ -35,7 +36,7 @@ class PasswordResetsController < ApplicationController
       flash.now[:danger] = "Email address not found"
       render 'new'
     end
-    end
+    
   end
 
   private

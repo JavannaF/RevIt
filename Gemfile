@@ -33,13 +33,15 @@ gem 'faker',                '1.4.2'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+  gem 'capybara'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  #gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.4'
 end
 
 group :development do
@@ -64,5 +66,7 @@ group :development do
 
   #geocoder for maps
   gem 'geocoder'
+
+  
 end
 
