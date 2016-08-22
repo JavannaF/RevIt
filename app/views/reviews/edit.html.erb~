@@ -2,7 +2,7 @@
 <h1>Editing Review</h1>
  
  <%= @item = Item.find(params[:id]) %>
- <%= @review = @item.reviews.new %>
+ <%= @review = @item.reviews.find(params[:item_id]) %>
  <%= form_for([@item,@review]) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 

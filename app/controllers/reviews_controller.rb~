@@ -84,7 +84,7 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      item = Item.find(params[:Item_id])
+      item = Item.find(params[:item_id])
       @review = item.reviews.find(params[:id])
     end
 

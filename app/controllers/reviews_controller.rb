@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   
   
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show, :update, :destroy]
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
