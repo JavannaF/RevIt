@@ -18,7 +18,7 @@
                             <%= link_to 'Destroy review', [review.item, review],
                                 method: :delete,
                                 data: { confirm: 'Are you sure?' } %>
-                            <%= link_to 'Edit', edit_item_review_path(review.item, review.item) %> 
+                            <%= link_to 'Edit', edit_item_review_path(review) %> 
                     </p>
 </div>
 <!-- jQuery -->
