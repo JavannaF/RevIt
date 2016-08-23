@@ -52,10 +52,10 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(item_params)
     if @item.save
       flash[:success] = "item created!"
-      redirect_to root_url
+      redirect_to item_path(@item)
     else
       @feed_items = []
-      render 'static_pages/home'
+      redirect_to  root_url
     end
   end
 

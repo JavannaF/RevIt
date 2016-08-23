@@ -6,8 +6,7 @@ class Item < ActiveRecord::Base
   validates :tag_list, presence: true
   validates :user_id, presence: true
   validates :name, presence: true
-  validates :avg_price, presence: true
-  validates :avg_rating, presence: true
+  
   validate  :picture_size
   
 
