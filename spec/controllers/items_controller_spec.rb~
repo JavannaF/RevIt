@@ -52,10 +52,29 @@ RSpec.describe ItemsController, type: :controller do
       end
       
       context "with invalid attributes" do
-        it "does not save the new contact" do
+        
+        it "does not save the new item without name" do
+          @item = FactoryGirl.create(:item)
+          expect{
+            post :create, item: { name: nil, description: "porto", store_location: "cagliari", tag_list: @item.tag_list, user: @user }
+          }.to_not change(Item,:count)
+        end
+        it "does not save the new item without description" do
+          @item = FactoryGirl.create(:item)
+          expect{
+            post :create, item: { name: "cavallo", description: nil, store_location: "cagliari", tag_list: @item.tag_list, user: @user }
+          }.to_not change(Item,:count)
+        end
+        it "does not save the new item without taglist" do
           
           expect{
-            post :create, item: { name: "cavallo", description: "porto", store_location: "cagliari", tag_list: nil, user: nil }
+            post :create, item: { name: "cavallo", description: "porto", store_location: "cagliari", tag_list: nil, user: @user }
+          }.to_not change(Item,:count)
+        end
+        it "does not save the new item without user" do
+          @item = FactoryGirl.create(:item)
+          expect{
+            post :create, item: { name: "cavallo", description: "porto", store_location: "cagliari", tag_list: @item.tag_list, user: nil }
           }.to_not change(Item,:count)
         end
         

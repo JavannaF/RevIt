@@ -11,4 +11,8 @@ class Review < ActiveRecord::Base
   validates :rating, presence: true
   validates :store, presence: true
   validates :item_id, presence: true
+  validates :store_location, presence: true
+  validates :item_id, presence: true
+  validates_numericality_of :rating, greater_than_or_equal_to: 0, less_than_or_equal_to: 5
+  validates_numericality_of :price, greater_than_or_equal_to: 0
 end
