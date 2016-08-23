@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   
   
-  before_action :set_review, only: [:show, :update, :destroy]
+  before_action :set_review, only: [:show, :update, :destroy, :upvote, :downvote]
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
@@ -80,6 +80,18 @@ class ReviewsController < ApplicationController
     best_price_location(@item)
     redirect_to item_path(@item)
   end
+  
+  
+  def upvote
+    @review.upvote_from current_user
+    redirect_to @review.item
+  end
+  
+  def downvote
+    @review.downvote_from current_user
+    redirect_to @review.item
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

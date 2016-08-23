@@ -1,4 +1,5 @@
 class Review < ActiveRecord::Base
+  acts_as_votable
   belongs_to :item
   belongs_to :user
   geocoded_by :store_location

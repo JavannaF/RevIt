@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  acts_as_voter
   #RECEIVER DEI FEEDBACKS
   has_many :passive_feedbacks, class_name: "Feedback",
   				foreign_key: "receiver_id",

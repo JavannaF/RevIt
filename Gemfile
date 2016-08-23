@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+#ACT_AS_VOTABLE (Like review)
+gem 'acts_as_votable', '~> 0.10.0'
 #SASS Ruby Gem FontAwesome
 gem 'font-awesome-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

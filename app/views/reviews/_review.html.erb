@@ -6,6 +6,24 @@
                             <%= review.user.name %>
                             <span class="pull-right">
                                 <strong>Price:</strong><%= review.price %> <strong>Store:</strong><%= review.store %><strong>Store Location:</strong><%= review.store_location %>
+                                <p class="Like">
+                                  
+                                  <%= link_to positive_item_review_path(review.item, review), class: "like", method: :put do %>
+                                    <button type="button" class="btn btn-info" aria-label="Left Align">
+                                        <span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                                        <span class="badge"><%= review.get_upvotes.size %></span>
+                                    </button>
+                                  <% end %>
+                                  
+                                  
+                                  <%= link_to negative_item_review_path(review.item, review), class: "like", method: :put do %>
+                                    <button type="button" class="btn btn-info" aria-label="Left Align">
+                                        <span class="fa fa-minus-square-o" aria-hidden="true"></span>
+                                        <span class="badge"><%= review.get_downvotes.size %></span>
+                                    </button>
+                                  <% end %>
+                                </p>
+                                
                                 <p>Posted <%= time_ago_in_words(review.created_at) %> ago.</p>
                             </span>
                             <p><%= review.comment %></p>
