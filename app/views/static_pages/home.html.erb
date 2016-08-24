@@ -1,16 +1,3 @@
-<% if logged_in? %>
-<div class="row">
-<aside class="col-md-4">
-<section class="user_info">
-<%= render 'shared/user_info' %>
-</section>
-<section class="item_form">
-<%= render 'shared/item_form' %>
-</section>
-</aside>
-</div>
-
-<% else %>
 <% if logged_in_owner? %>
   <div class="row">
     <aside class="col-md-4">
@@ -26,5 +13,5 @@
 
     <%= render partial: "home" %>
 <% end %>
-<% end %>
+
 

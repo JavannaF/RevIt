@@ -48,6 +48,8 @@
         Posted <%= time_ago_in_words(review.created_at) %> ago.
     </p>
     
+    <% if review.user == current_user || admin_user %>
+    
     <p>
         <%= link_to 'Destroy ', [review.item, review],
             method: :delete,
@@ -60,6 +62,8 @@
        <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#6495ED"></i>
 
     </p>
+    
+    <% end %>
 
 </div>
 

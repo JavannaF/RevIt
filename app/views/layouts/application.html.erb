@@ -34,6 +34,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
     <% if !logged_in? && !logged_in_owner? %>
@@ -86,20 +89,24 @@
         </div>
     </div>
     <% else if logged_in? %>
-      <div class="container">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <h1>RevIt</h1>
+            <div class="col-md-10">
+                <Strong><h1>RevIt</h1></Strong>
             </div>
-        
-                       
-            <div class="col-sm-4">
-                <div class="btn-group open">
-                    <%= link_to "Log out", logout_path, method: :delete, class: "btn btn-primary" %>
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                        <%= link_to gravatar_for(current_user), current_user %> 
+                        <%= current_user.name %>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li><%= link_to "   Profile", current_user, class: "fa fa-fw fa-user" %></li>
+                        <li><%= link_to "   Settings  ", edit_user_path(current_user), class: "fa fa-fw fa-gear" %></li>
+                        <li role="presentation" class="divider"></li>
+                        <li><%= link_to "   Log out  ", logout_path, method: :delete, class: "fa fa-fw fa-power-off" %></li>
+                    </ul>
                 </div>
-            </div>
-
-                        
             </div>
         </div>
     </div>
@@ -130,31 +137,31 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Categories <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
-                                    <a href="http://localhost:3000/items?category=booksaudible">Books & Audible</a>
+                                    <a href="http://localhost:3000/items?category=booksaudible"><i class="fa fa-book" aria-hidden="true"></i> Books & Audible</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=moviesmusicgames">Movies, Music & Games</a>
+                                    <a href="http://localhost:3000/items?category=moviesmusicgames"><i class="fa fa-film" aria-hidden="true"></i> Movies, Music & Games</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=electronicscomputers">Electronics & Computer</a>
+                                    <a href="http://localhost:3000/items?category=electronicscomputers"><i class="fa fa-laptop" aria-hidden="true"></i> Electronics & Computer</a>
                                 </li>
                                 <li>
-                                    <a  href="http://localhost:3000/items?category=homegardentools">Home, Garden & Tools</a>
+                                    <a  href="http://localhost:3000/items?category=homegardentools"><i class="fa fa-home" aria-hidden="true"></i> Home, Garden & Tools</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=beautyhealthgrocery">Beauty, Health & Grocery</a>
+                                    <a href="http://localhost:3000/items?category=beautyhealthgrocery"><i class="fa fa-heart-o" aria-hidden="true"></i> Beauty, Health & Grocery</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=toyskidsbaby">Toys, Kids & Baby</a>
+                                    <a href="http://localhost:3000/items?category=toyskidsbaby"><i class="fa fa-child" aria-hidden="true"></i> Toys, Kids & Baby</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=clothingshoesjewelry">Clothing, Shoes & Jewelry</a>
+                                    <a href="http://localhost:3000/items?category=clothingshoesjewelry"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Clothing, Shoes & Jewelry</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=sportsoutdoors">Sports & Outdoors</a>
+                                    <a href="http://localhost:3000/items?category=sportsoutdoors"><i class="fa fa-futbol-o" aria-hidden="true"></i> Sports & Outdoors</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=automotiveindustrial">Automotive & Industrial</a>
+                                    <a href="http://localhost:3000/items?category=automotiveindustrial"><i class="fa fa-car" aria-hidden="true"></i> Automotive & Industrial</a>
                                 </li>
                             </ul>
                         </li>
@@ -165,9 +172,13 @@
                             <a href="/contacts/new"> Contact </a>
                         </li>
                 </ul> 
-                    
+                
+                
+                
+                
+                
                 <ul class="nav navbar-nav navbar-right">    
-                    
+                        
                         <li>
                             <a href="/signup"> Signup </a>
                         </li>
@@ -214,6 +225,13 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="/javascripts/bootstrap.min.js"></script>
 
+    <script>
+        $(document).ready(function(){
+        $(".dropdown-toggle").dropdown();
+        });
+    </script>
 
 </body>
 </html>
+
+
