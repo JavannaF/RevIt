@@ -3,12 +3,10 @@
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, placeholder: "Create new item" %>
-    <%= f.label :avg_price %><br>
-    <%= f.text_field :avg_price %>
-    <%= f.label :avg_rating %><br>
-    <%= f.text_field :avg_rating %>
+    <br>
     <%= f.label :description %><br>
     <%= f.text_area :description %>
+    <br>
      <%= f.label :tag_list %><br>
  <pre style="width:500px">
   <%= f.check_box :tag_list, { :multiple => true }, 'booksaudible', nil%> Books & Audible         <%= f.check_box :tag_list, { :multiple => true }, 'beautyhealtsgrocery', nil%> Beauties, Helats & Grocery
