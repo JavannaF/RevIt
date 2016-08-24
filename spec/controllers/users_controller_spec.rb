@@ -44,6 +44,26 @@ RSpec.describe UsersController, type: :controller do
         end
       end
     end
+    describe "DELETE destroy" do
+     context "user" do
+      it "destroy only if admin" do
+        count = User.count
+        @user.admin = true
+        @user.save
+        delete :destroy, id: @user
+        assert_response :redirect
+    	expect(User.count).not_to eq(count)
+      end
+
+      it "not destroy  if not admin" do
+        count = User.count
+        
+        delete :destroy, id: @user
+        assert_response :redirect
+    	expect(User.count).to eq(count)
+      end
+     end
+    end
 
 
  private

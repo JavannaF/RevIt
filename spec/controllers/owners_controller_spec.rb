@@ -45,6 +45,29 @@ RSpec.describe OwnersController, type: :controller do
         end
       end
     end
+    describe "DELETE destroy" do
+     context "owner" do
+      it "destroy only if admin" do
+        @user =FactoryGirl.create(:user)
+        sign_in_user @user
+        count = Owner.count
+        @user.admin = true
+        @user.save
+        delete :destroy, id: @owner
+        assert_response :redirect
+    	expect(Owner.count).not_to eq(count)
+      end
+
+      it "not destroy  if not admin" do
+        count = Owner.count
+        @user = FactoryGirl.create(:user)
+        sign_in_user @user
+        delete :destroy, id: @owner
+        assert_response :redirect
+    	expect(Owner.count).to eq(count)
+      end
+     end
+    end
 
 
  private
@@ -61,6 +84,21 @@ RSpec.describe OwnersController, type: :controller do
   end
   def signed_in?
     return !@current_owner.nil?
+  end
+
+  def sign_in_user(user)
+    #cookies.permanent.signed[:remember_token] = [user.id]
+    session[:user_id] = user.id
+    current_user = user
+    @current_user = user
+  end
+  def sign_out_user
+    current_user = nil
+    @current_user = nil
+    cookies.delete(:remember_token)
+  end
+  def signed_in_user?
+    return !@current_user.nil?
   end
   
 end

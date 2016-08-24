@@ -11,12 +11,12 @@ RSpec.describe UsersController, type: :controller do
       
       context "valid attributes" do
         it "located the requested @user" do
-          put :update, id: @user, user: { username: @user.username }
+          put :update, id: @user, user: { name: @user.name }
           expect(assigns(:user)).to eq(@user)      
         end
       
         it "changes @user's attributes" do
-          put :update, id: @user, user: { username: "Larry" }
+          put :update, id: @user, user: { name: "Larry" }
           @user.save!
           assert_response :success
         end
@@ -25,16 +25,16 @@ RSpec.describe UsersController, type: :controller do
       
       context "invalid attributes" do
         it "locates the requested @user" do
-          put :update, id: @user, user: { username: "e"}
+          put :update, id: @user, user: { name: "e"}
           expect(assigns(:user)).to eq(@user)      
         end
         
         it "does not change @user's attributes" do
           @email = @user.email
           put :update, id: @user, 
-            user: { username: "Larry", email: nil}
+            user: { name: "Larry", email: nil}
           @user.reload
-          expect(@user.username).not_to eq("larry")
+          expect(@user.name).not_to eq("larry")
           expect(@user.email).to eq(@email)
         end
         
@@ -43,6 +43,26 @@ RSpec.describe UsersController, type: :controller do
           expect(response).to render_template(:edit) 
         end
       end
+    end
+    describe "DELETE destroy" do
+     context "admin" do
+      it "destroy only if admin" do
+        count = User.count
+        @user.admin = true
+        @user.save
+        delete :destroy, id: @user
+        assert_response :redirect
+    	expect(User.count).not_to eq(count)
+      end
+
+      it "not destroy  if not admin" do
+        count = User.count
+        
+        delete :destroy, id: @user
+        assert_response :redirect
+    	expect(User.count).to eq(count)
+      end
+     end
     end
 
 
