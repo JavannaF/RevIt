@@ -1,0 +1,13 @@
+<% provide(:title, 'All adds') %>
+<h1>All adds</h1>
+ <tr> <% if !@adds.present? %>
+  <p>There are no adds matching this name.</p> </tr>
+<% end %>
+<%= will_paginate %>
+<ul class="adds">
+   <%= render @adds %>
+</ul>
+<br>
+
+<br>
+<%= will_paginate %>

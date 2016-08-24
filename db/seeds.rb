@@ -14,6 +14,13 @@ User.create!(name:  "Matteo",
              activated: true,
              activated_at: Time.zone.now)
 
+User.create!(name:  "Francesco",
+             email: "francesco@gmail.com",
+             password:              "francesco",
+             password_confirmation: "francesco",
+             activated: true,
+             activated_at: Time.zone.now)
+
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
@@ -29,7 +36,7 @@ end
 users = User.order(:created_at).take(6)
 50.times do
   name = Faker::Lorem.sentence(5)
-  users.each { |user| user.items.create!(name: name, avg_rating: 3, avg_price: 3, tag_list:"booksaudible") }
+  users.each { |user| user.items.create!(name: name, avg_rating: 3,description: "prova", avg_price: 3, tag_list:"booksaudible") }
 end
 
 Owner.create!(name:  "Example Owner",

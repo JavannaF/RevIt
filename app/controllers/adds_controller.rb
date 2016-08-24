@@ -4,7 +4,11 @@ class AddsController < ApplicationController
   def new
     @add = Add.new
   end
-
+  
+  def index   
+    @add = Add.paginate(page: params[:page]).per_page(10)
+  end
+ 
   def create
     @add = current_owner.adds.build(add_params)
     if @add.save
@@ -12,7 +16,7 @@ class AddsController < ApplicationController
       redirect_to root_url
     else
       @feed_adds =[]
-      render 'static_pages/home'
+      redirect_to root_url
     end
   end
 

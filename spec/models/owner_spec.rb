@@ -69,6 +69,19 @@ RSpec.describe Owner, type: :model do
   it "is invalid without a password_confirmation" do
     assert !FactoryGirl.build(:owner, password_confirmation: nil).valid?
   end
+
+  it "is invalid with a short password" do
+    assert !FactoryGirl.build(:owner, password: "pr").valid?
+  end
   
+  it "is invalid with a name too long" do
+    assert !FactoryGirl.build(:owner, name: "a"*51).valid?
+  end
+  
+   
+  it "Name too long" do
+    item = FactoryGirl.build(:owner, name: ""*51)
+    expect(item.valid?).to eq false
+  end
     
 end

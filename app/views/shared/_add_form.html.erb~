@@ -4,13 +4,8 @@
     <%= f.text_area :name, placeholder: "Add's name" %>
     <%= f.label :description %><br>
     <%= f.text_area :description %>
-    <%= f.label :price %><br>
-<<<<<<< HEAD
-    <%= f.text_field :price %>
     
-=======
-    <%= f.text_area :price %>
->>>>>>> master
+
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">

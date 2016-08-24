@@ -13,18 +13,9 @@
     </div>
   <% end %>
 
-    <%= render 'shared/error_messages',object: f.object %>
+    
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
-  
-  
-    <%= f.label :avg_price %>
-    <%= f.text_field :avg_price, class: 'form-control' %>
-  
-  
-    <%= f.label :avg_rating %>
-    <%= f.text_field :avg_rating, class: 'form-control' %>
-  
   
     <%= f.label :description %>
     <%= f.text_area :description, class: 'form-control' %>
