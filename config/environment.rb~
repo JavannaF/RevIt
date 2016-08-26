@@ -1,5 +1,5 @@
 # Load the Rails application.
-
+config.action_mailer.default_url_options = { :host => 'localhost' }
 
 require File.expand_path('../application', __FILE__)
 require 'omniauth'
