@@ -5,7 +5,6 @@
       
       <h2><%= contact.title %></h2>
       <h4><%= contact.description %></h4>
-      <%= link_to "Destroy", contact_path(contact), method: :delete %>
       <p class="pull-right"><%= contact.author %></p>
         
       <p><hr></p>

@@ -75,7 +75,7 @@ RSpec.describe ContactsController, type: :controller do
           }.to_not change(Contact,:count)
         end
         it "does not save the new contact without author" do
-          @contact = FactoryGirl.create(:contact)
+          
           expect{
             post :create, contact: { title: @contact.title, description: @contact.description, author: nil }
           }.to_not change(Contact,:count)
