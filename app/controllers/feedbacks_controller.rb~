@@ -15,7 +15,7 @@ class FeedbacksController < ApplicationController
       redirect_to @user#show
     else
       
-      render :root
+      redirect_to :root
     end
 
    

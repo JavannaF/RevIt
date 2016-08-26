@@ -1,4 +1,6 @@
 class FeedbacksController < ApplicationController
+    before_action :exist_feedback , only: :create
+
     def new
     @feedback = Feedback.new
     end
@@ -24,5 +26,12 @@ class FeedbacksController < ApplicationController
        def feedback_params
         params.permit(:value,:receiver_id,:giver_id) 
         
-    end
+       end
+       
+       def exist_feedback
+          @user =User.find(params[:receiver_id])
+          if @user.passive_feedbacks.exists?(['giver_id LIKE ?',current_user.id])
+            redirect_to user_path(@user)
+          end
+       end
 end

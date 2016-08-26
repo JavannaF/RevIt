@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   
   def index
-     
+    
     if (params[:category])
       @items=Item.tagged_with(params[:category]).paginate(page:params[:page]).per_page(10)    
     else
@@ -80,7 +80,10 @@ class ItemsController < ApplicationController
     flash[:success] = "Item deleted"
     redirect_to request.referrer || root_url
   end
-
+  
+  def most_commented
+    @item = Item.maximum(Reviews.group(:item).count)
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -96,4 +99,7 @@ class ItemsController < ApplicationController
       @item = current_user.items.find_by(id: params[:id])
       redirect_to root_url if @item.nil?
     end
+    
+    
+    
 end

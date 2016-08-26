@@ -51,6 +51,7 @@ class ReviewsController < ApplicationController
       lower_price(@item)
       media_stellina(@item)
       best_price_location(@item)
+      @item.increment(count, by = 1)
       redirect_to @item
     else
       flash[:error] = "review was not posted!"
@@ -78,6 +79,7 @@ class ReviewsController < ApplicationController
     lower_price(@item)
     media_stellina(@item)
     best_price_location(@item)
+    @item.decrement(count, by = 1)
     redirect_to item_path(@item)
   end
   
@@ -131,4 +133,7 @@ class ReviewsController < ApplicationController
       item.longitude = item.reviews.where(price: item.reviews.minimum(:price)).limit(1).pluck(:longitude)[0]
       item.save
     end
+
+    
+    
 end

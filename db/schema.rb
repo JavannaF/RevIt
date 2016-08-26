@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823143644) do
+ActiveRecord::Schema.define(version: 20160826090951) do
 
   create_table "adds", force: :cascade do |t|
     t.string   "name"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160823143644) do
     t.string   "store_location"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "count"
   end
 
   add_index "items", ["user_id", "created_at"], name: "index_items_on_user_id_and_created_at"

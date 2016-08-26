@@ -1,4 +1,6 @@
 class EvaluationsController < ApplicationController
+   before_action :exist_evaluation , only: :create    
+
    def new
     @evaluation = Evaluation.new
     end
@@ -22,5 +24,12 @@ class EvaluationsController < ApplicationController
     private
        def evaluation_params
         params.permit(:value,:owner_id,:user_id) 
-     end   
+       end  
+
+       def exist_evaluation
+         @owner=Owner.find(params[:owner_id])
+         if @owner.passive_evaluations.exists?(['user_id LIKE ?',current_user.id])
+           redirect_to owner_path(@owner)
+         end
+       end
 end
