@@ -81,9 +81,6 @@ class ItemsController < ApplicationController
     redirect_to request.referrer || root_url
   end
   
-  def most_commented
-    @item = Item.maximum(Reviews.group(:item).count)
-  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item

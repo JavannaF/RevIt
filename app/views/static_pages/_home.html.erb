@@ -41,24 +41,38 @@
                 </div>
                 
                 <div class="row">
-                    <h2>Most Popular</h2>
+                    <h2>Most Commented</h2>
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://g01.a.alicdn.com/kf/HTB1KSAvKpXXXXX4XpXXq6xXFXXXh/2015-Nike-Roshe-Run-men-Running-Shoes-Nike-Athletic-Shoes-men-s-Roshe-Run-Light-Running.jpg" width="320" height="150" alt="Nike Roshe Run">
+                            <% @item1 = Item.order(:count).first %>
+                            <%= image_tag @item1.picture.most_commented.url %>
                             <div class="caption">
-                                <h4 class="pull-right">$90.99</h4>
-                                <h4><a href="#">Nike Roshe Run</a>
+                                <h4 class="pull-right"><%= @item1.avg_price %></h4>
+                                <h4><a href="#"><%= @item1.name %></a>
                                 </h4>
-                                <p>See more shoes like this online store item at <a target="_blank" href="http://www.nike.com/">Nike - http://www.nike.com/</a>.</p>
+                                <p><%= @item1.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
+                                <p class="pull-right"><%= @item1.count %> Reviews</p>
+                                <div class="review-rating" data-score="<%= @item1.avg_rating %>"></div> <%= @item1.avg_rating %> stars
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <% @item2 = Item.order(:count).second %>
+                            <%= image_tag @item2.picture.most_commented.url %>
+                            <div class="caption">
+                                <h4 class="pull-right"><%= @item2.avg_price %></h4>
+                                <h4><a href="#"><%= @item2.name %></a>
+                                </h4>
+                                <p><%= @item2.description %></p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right"><%= @item2.count %> Reviews</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
+                                    <div class="review-rating" data-score="<%= @item2.avg_rating %>"></div> <%= @item2.avg_rating %> stars
                                 </p>
                             </div>
                         </div>
@@ -66,21 +80,18 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="https://www.hilti.it/medias/sys_master/images/h58/9088782827550/30679_APC_460x260.jpg" width="320" height="150" alt="Hilti Saw">
+                            <% @item3 = Item.order(:count).third %>
+                            <%= image_tag @item3.picture.most_commented.url %>
                             <div class="caption">
-                                <h4 class="pull-right">$640.99</h4>
-                                <h4><a href="#">Hilti Saw</a>
+                                <h4 class="pull-right"><%= @item3.avg_price %></h4>
+                                <h4><a href="#"><%= @item3.name %></a>
                                 </h4>
-                                <p>This is the easiest way to solve your fu**ing problems.</p>
+                                <p><%= @item3.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right">0 reviews</p>
+                                <p class="pull-right"><%= @item3.count %> Reviews</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <div class="review-rating" data-score="<%= @item3.avg_rating %>"></div> <%= @item3.avg_rating %> stars
                                 </p>
                             </div>
                         </div>
@@ -88,21 +99,18 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="https://farm1.staticflickr.com/770/22563240163_c81a8b9130_o.jpg" width="320" height="150" alt="GT4">
+                            <% @item4 = Item.order(:count).fourth %>
+                            <%= image_tag @item4.picture.most_commented.url %>
                             <div class="caption">
-                                <h4 class="pull-right">$n.d.</h4>
-                                <h4><a href="#">Porsche Cayman GT4</a>
+                                <h4 class="pull-right"><%= @item4.avg_price %></h4>
+                                <h4><a href="#"><%= @item4.name %></a>
                                 </h4>
-                                <p>Rebels, race on. <a target="_blank" href="http://www.porsche.com"> Porsche - http://www.porsche.com</a></p>
+                                <p><%= @item4.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right">1 reviews</p>
+                               <p class="pull-right"><%= @item4.count %> Reviews</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
+                                    <div class="review-rating" data-score="<%= @item4.avg_rating %>"></div> <%= @item4.avg_rating %> stars
                                 </p>
                             </div>
                         </div>
@@ -110,21 +118,18 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" width="320" height="150" alt="">
+                            <% @item5 = Item.order(:count).fifth %>
+                            <%= image_tag @item5.picture.most_commented.url %>
                             <div class="caption">
-                                <h4 class="pull-right">$84.99</h4>
-                                <h4><a href="#">Fourth Product</a>
+                                <h4 class="pull-right"><%= @item5.avg_price %></h4>
+                                <h4><a href="#"><%= @item5.name %></a>
                                 </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p><%= @item5.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right">6 reviews</p>
+                                <p class="pull-right"><%= @item5.count %> Reviews</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <div class="review-rating" data-score="<%= @item5.avg_rating %>"></div> <%= @item5.avg_rating %> stars
                                 </p>
                             </div>
                         </div>
@@ -132,43 +137,18 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" width="320" height="150" alt="">
+                            <% @item6 = Item.order(:count).offset(1).fifth %>
+                            <%= image_tag @item6.picture.most_commented.url %>
                             <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="#">Fifth Product</a>
+                                <h4 class="pull-right"><%= @item6.avg_price %></h4>
+                                <h4><a href="#"><%= @item6.name %></a>
                                 </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p><%= @item6.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
+                                <p class="pull-right"><%= @item6.count %> Reviews</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" width="320" height="150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="#">Sixth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <div class="review-rating" data-score="<%= @item6.avg_rating %>"></div> <%= @item6.avg_rating %> stars
                                 </p>
                             </div>
                         </div>
@@ -186,3 +166,12 @@
 </body>
 
 </html>
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
