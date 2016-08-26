@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
   end
   
   it "Username too long" do
-    user = FactoryGirl.build(:user, name: ""*81)
+    user = FactoryGirl.build(:user, name: ""*101)
     expect(user.valid?).to eq false
   end
   

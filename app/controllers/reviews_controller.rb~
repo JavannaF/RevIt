@@ -51,6 +51,7 @@ class ReviewsController < ApplicationController
       lower_price(@item)
       media_stellina(@item)
       best_price_location(@item)
+      @item.increment(@item.count, by = 1)
       redirect_to @item
     else
       flash[:error] = "review was not posted!"
@@ -78,6 +79,7 @@ class ReviewsController < ApplicationController
     lower_price(@item)
     media_stellina(@item)
     best_price_location(@item)
+    @item.decrement(@item.count, by = 1)
     redirect_to item_path(@item)
   end
   
@@ -132,10 +134,6 @@ class ReviewsController < ApplicationController
       item.save
     end
 
-    #aggiornamento count degli item
-    def count
-      Item.each do |f|
-        f.count = f.reviews.count
-      end
-    end
+    
+    
 end

@@ -64,13 +64,13 @@ ActiveRecord::Schema.define(version: 20160826090951) do
     t.float    "avg_rating"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "picture"
     t.string   "store_location"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "count"
+    t.integer  "count",          default: 0
   end
 
   add_index "items", ["user_id", "created_at"], name: "index_items_on_user_id_and_created_at"

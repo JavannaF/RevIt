@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
       lower_price(@item)
       media_stellina(@item)
       best_price_location(@item)
-      @item.increment(count, by = 1)
+      @item.increment!(:count, by = 1)
       redirect_to @item
     else
       flash[:error] = "review was not posted!"
@@ -79,7 +79,7 @@ class ReviewsController < ApplicationController
     lower_price(@item)
     media_stellina(@item)
     best_price_location(@item)
-    @item.decrement(count, by = 1)
+    @item.decrement!(:count, by = 1)
     redirect_to item_path(@item)
   end
   

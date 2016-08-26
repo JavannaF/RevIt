@@ -21,17 +21,11 @@ RSpec.describe User, type: :model do
   end
   
   it "Username too long" do
-    user = FactoryGirl.build(:user, name: ""*81)
+    user = FactoryGirl.build(:user, name: ""*101)
     expect(user.valid?).to eq false
   end
   
-  it "Username uniqness" do
-    user = FactoryGirl.create(:user) 
-    user.save!
-    user2 = FactoryGirl.create(:user) 
-    user2.name = user.name
-    expect(user2.valid?).to eq false
-  end
+  
   
   it "Invalid email" do
     user =FactoryGirl.build(:user, email: "invalid")
