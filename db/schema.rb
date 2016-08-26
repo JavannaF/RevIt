@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 20160826090951) do
 
   create_table "evaluations", force: :cascade do |t|
     t.integer  "value"
-    t.integer  "owner_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "evaluated_id"
+    t.integer  "evaluater_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|

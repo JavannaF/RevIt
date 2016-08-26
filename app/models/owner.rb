@@ -1,7 +1,7 @@
 class Owner < ActiveRecord::Base
   #Valutazione
   has_many :passive_evaluations, class_name: "Evaluation",
-  				foreign_key: "owner_id",
+  				foreign_key: "evaluated_id",
 				dependent: :destroy
   has_many :evaluaters, through: :passive_evaluations, source: :evaluater
   #

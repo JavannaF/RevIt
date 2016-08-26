@@ -1,7 +1,7 @@
 class Owner < ActiveRecord::Base
   #Valutazione
   has_many :passive_evaluations, class_name: "Evaluation",
-  				foreign_key: "owner_id",
+  				foreign_key: "evaluated_id",
 				dependent: :destroy
   has_many :evaluaters, through: :passive_evaluations, source: :evaluater
   #
@@ -24,7 +24,7 @@ class Owner < ActiveRecord::Base
 
   has_secure_password
   validates :password, length: { minimum: 6 }
-
+  validates :password_confirmation, presence: true
   # Returns the hash digest of the given string.
   def Owner.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

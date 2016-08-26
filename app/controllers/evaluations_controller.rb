@@ -5,8 +5,8 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.new
     end
     def create
-        params[:user_id]=current_user.id
-        @owner=Owner.find(params[:owner_id])
+        params[:evaluater_id]=current_user.id
+        @owner=Owner.find(params[:evaluated_id])
         @evaluation= Evaluation.new(evaluation_params)
         @owner.passive_evaluations<<@evaluation
         current_user.active_evaluations<<@evaluation
@@ -27,8 +27,8 @@ class EvaluationsController < ApplicationController
        end  
 
        def exist_evaluation
-         @owner=Owner.find(params[:owner_id])
-         if @owner.passive_evaluations.exists?(['user_id LIKE ?',current_user.id])
+         @owner=Owner.find(params[:evaluated_id])
+         if @owner.passive_evaluations.exists?(['evaluater_id LIKE ?',current_user.id])
            redirect_to owner_path(@owner)
          end
        end
