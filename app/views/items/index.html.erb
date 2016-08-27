@@ -12,16 +12,18 @@
     
     <div class="row">
         <div class="col-md-3">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/200x150" alt="">
-            </a>
+            <% if !item.picture.present? %>
+                <%= link_to image_tag("http://placehold.it/200x150"), item %> 
+            <% else %>
+                <%= link_to image_tag(item.picture.listing_items.url), item %> 
+            <% end %>
+
         </div>
         
         <div class="text-left">
-            <h3><%= item.name %></h3>
+            <h3><%= link_to item.name,  item %></h3>
             <h4><%= item.avg_price %><%= item.avg_rating %></h4>
             <p><%= item.description %></p>
-            <%= link_to "View Items", item_path(item.id) ,class: "btn btn-primary" %>
         </div>
             
     </div>
