@@ -4,7 +4,8 @@ class AddsController < ApplicationController
   def new
     @add = Add.new
   end
-  
+   def show
+  end
   def index   
     @add = Add.paginate(page: params[:page]).per_page(10)
   end

@@ -47,7 +47,7 @@ class OwnersController < ApplicationController
 
   def destroy
     Owner.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "Owner deleted"
     redirect_to owners_url
   end
 

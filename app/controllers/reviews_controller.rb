@@ -14,8 +14,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
-    @user = User.find(params[:id])
-    @reviews = @user.review.paginate(page: params[:page]).per_page(10)
+    @item = Item.find(params[:item_id])
+    @reviews = @item.reviews.find(params[:id])
   end
 
   # GET /reviews/new
