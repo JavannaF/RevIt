@@ -42,7 +42,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
   
   version :the_best do
-     process :resize_to_fit => [300, 800]
+     process :resize_to_fit => [800, 300]
   end
   
   version :listing_items do

@@ -20,9 +20,11 @@
 
         </div>
         
-        <div class="text-left">
+        <div class="col-md-8">
             <h3><%= link_to item.name,  item %></h3>
-            <h4><%= item.avg_price %><%= item.avg_rating %></h4>
+            <h4><i class="fa fa-usd" aria-hidden="true"></i> <%= item.avg_price %></h4>
+            <div class="review-rating" data-score="<%= item.avg_rating %>"></div> <%= item.avg_rating %> stars
+
             <p><%= item.description %></p>
         </div>
             

@@ -13,9 +13,9 @@
                     <div class="col-md-12">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                             <h2>The best</h2>
-                            <% @best1 = Item.order(:avg_rating).first %>
-                            <% @best2 = Item.order(:avg_rating).second %>
-                            <% @best3 = Item.order(:avg_rating).third %>
+                            <% @best1 = Item.reorder(:avg_rating).reverse_order.first %>
+                            <% @best2 = Item.reorder(:avg_rating).reverse_order.second %>
+                            <% @best3 = Item.reorder(:avg_rating).reverse_order.third %>
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -23,13 +23,25 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <%= link_to image_tag(@best1.picture.the_best.url), @best1 %> 
+                                    <% if !@best1.picture.present? %>
+                                        <%= link_to image_tag("http://placehold.it/800x300"), @best1 %> 
+                                    <% else %>
+                                        <%= link_to image_tag(@best1.picture.the_best.url), @best1 %> 
+                                    <% end %>
                                 </div>
                                 <div class="item">
-                                    <%= link_to image_tag(@best2.picture.the_best.url), @best2 %>                         
+                                    <% if !@best2.picture.present? %>
+                                        <%= link_to image_tag("http://placehold.it/800x300"), @best2 %> 
+                                    <% else %>
+                                        <%= link_to image_tag(@best2.picture.the_best.url), @best2 %> 
+                                    <% end %>                                
                                 </div>
                                 <div class="item">
-                                    <%= link_to image_tag(@best3.picture.the_best.url), @best3 %>                               
+                                    <% if !@best3.picture.present? %>
+                                        <%= link_to image_tag("http://placehold.it/800x300"), @best3 %> 
+                                    <% else %>
+                                        <%= link_to image_tag(@best3.picture.the_best.url), @best3 %> 
+                                    <% end %>                                
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -47,8 +59,12 @@
                     <h2>Most Commented</h2>
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item1 = Item.order(:count).first %>
-                            <%= image_tag @item1.picture.most_commented.url %>
+                            <% @item1 = Item.reorder(:count).reverse_order.first %>
+                            <% if !@item1.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/320x150"), @item1 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@item1.picture.most_commented.url), @item1 %> 
+                            <% end %>
                             <div class="caption">
                                 <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @item1.avg_price %></h4>
                                 <h4><%= link_to @item1.name,  @item1 %></a>
@@ -64,8 +80,12 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item2 = Item.order(:count).second %>
-                            <%= image_tag @item2.picture.most_commented.url %>
+                            <% @item2 = Item.reorder(:count).reverse_order.second %>
+                            <% if !@item2.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/320x150"), @item2 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@item2.picture.most_commented.url), @item2 %> 
+                            <% end %>
                             <div class="caption">
                                 <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @item2.avg_price %></h4>
                                 <h4><%= link_to @item2.name,  @item2 %></a>
@@ -83,9 +103,12 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item3 = Item.order(:count).third %>
-                            <%= image_tag @item3.picture.most_commented.url %>
-                            <div class="caption">
+                            <% @item3 = Item.reorder(:count).reverse_order.third %>
+                            <% if !@item3.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/320x150"), @item3 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@item3.picture.most_commented.url), @item3 %> 
+                            <% end %>                            <div class="caption">
                                 <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @item3.avg_price %></h4>
                                 <h4><%= link_to @item3.name,  @item3 %></a>
                                 </h4>
@@ -102,8 +125,12 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item4 = Item.order(:count).fourth %>
-                            <%= image_tag @item4.picture.most_commented.url %>
+                            <% @item4 = Item.reorder(:count).reverse_order.fourth %>
+                            <% if !@item4.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/320x150"), @item4 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@item4.picture.most_commented.url), @item4 %> 
+                            <% end %>
                             <div class="caption">
                                 <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @item4.avg_price %></h4>
                                 <h4><%= link_to @item4.name,  @item4 %></a>
@@ -121,8 +148,12 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item5 = Item.order(:count).fifth %>
-                            <%= image_tag @item5.picture.most_commented.url %>
+                            <% @item5 = Item.reorder(:count).reverse_order.fifth %>
+                            <% if !@item5.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/320x150"), @item5 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@item5.picture.most_commented.url), @item5 %> 
+                            <% end %>
                             <div class="caption">
                                 <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @item5.avg_price %></h4>
                                 <h4><%= link_to @item5.name,  @item5 %></a>
@@ -140,8 +171,12 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item6 = Item.order(:count).offset(1).fifth %>
-                            <%= image_tag @item6.picture.most_commented.url %>
+                            <% @item6 = Item.reorder(:count).reverse_order.offset(1).fifth %>
+                            <% if !@item6.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/320x150"), @item6 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@item6.picture.most_commented.url), @item6 %> 
+                            <% end %>
                             <div class="caption">
                                 <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @item6.avg_price %></h4>
                                 <h4><%= link_to @item6.name,  @item6 %></a>
