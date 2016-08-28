@@ -1,18 +1,14 @@
-<% form_for(@items) do |f| %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :avg_rating %><br />
-    <%= f.collection_select :avg_rating %>
-  </p>
-  <p>
-    Price Range<br />
-    <%= f.text_field :avg_price, :size => 7 %> 
-    
-  </p>
-  <p><%= f.submit "Submit" %></p>
+<div style="width:300px">
+<%= form_tag items_path, method: :get,id:"search-form" do %>
+  <p><%= t(:name) %></p>
+  <%= text_field_tag :name, params[:name] %><br><br>
+  <p><%= t(:minimum) %></p>
+  <%= number_field_tag :avg_rating, params[:avg_rating],min:0, max:5,:value =>0 ,:step => 0.1 %><br>
+  <p><%= t(:ofprice) %></p>
+Min:<%= number_field_tag :min_price, params[:min_price], min:0, :value =>0, :step=>0.1%><br>
+Max:<%= number_field_tag :max_price, params[:max_price], min:0, :value =>10000, :step=>0.1%><br>
+<%= select_tag :category_search, options_for_select([ 'Select One',<%= t(:ba) %>,<%= t(:mmg) %>,<%= t(:ec) %>,'<%= t(:hgt) %>,<%= t(:bhg) %>,<%= t(:tkb) %>,<%= t(:csj) %>, <%= t(:so) %>, <%= t(:so) %> ]) %>
+  <%= submit_tag t(:search), name: nil %>
 <% end %>
 
-
+</div>

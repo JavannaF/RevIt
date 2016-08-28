@@ -12,7 +12,7 @@
 
                     <div class="col-md-12">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <h2>The best</h2>
+                            <h2><%= t(:thebest)%></h2>
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -41,7 +41,7 @@
                 </div>
                 
                 <div class="row">
-                    <h2>Most Commented</h2>
+                    <h2><%= t(:mostcommented)%></h2>
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <% @item1 = Item.order(:count).first %>

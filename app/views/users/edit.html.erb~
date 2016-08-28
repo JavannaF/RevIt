@@ -1,11 +1,11 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<h1><%= t(:uyp) %></h1>
 
 
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
+      <%= f.label t(:name) %>
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
@@ -17,7 +17,7 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= f.submit t(:save), class: "btn btn-primary" %>
     <% end %>
 
     <div class="gravatar_edit">

@@ -4,22 +4,10 @@
 <h1>Listing Items</h1>
     
     <div class="text-right">
-        <a class="btn btn-primary" href="/items/new">New Item </span></a>
+        <a class="btn btn-primary" href="/items/new"><%= t(:new)+" "+t(:item) %></span></a>
     </div>
     
-    <div class="row">
-        <div class="col-md-3">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/200x150" alt="">
-            </a>
-        </div>
-        
-        <div class="text-left">
-            <h3><%= @item.name %></h3>
-            <h4><%= @item.avg_price %><%= item.avg_rating %></h4>
-            <p><%= @item.description %></p>
-            <%= link_to "View Items", item_path(@item.id) ,class: "btn btn-primary" %>
-        </div>
+    
     <% @items.each do |item| %>
     
     <div class="row">
@@ -33,7 +21,7 @@
             <h3><%= item.name %></h3>
             <h4><%= item.avg_price %><%= item.avg_rating %></h4>
             <p><%= item.description %></p>
-            <%= link_to "View Items", item_path(item.id) ,class: "btn btn-primary" %>
+            <%= link_to t(:view)+" "+t(:item), item_path(item.id) ,class: "btn btn-primary" %>
         </div>
             
     </div>
@@ -44,7 +32,7 @@
 <% end %>
 
  <tr> <% if !@items.present? %>
-  <p>There are no items matching these features.</p> </tr>
+  <p><%= t(:nosearchitem) %></p> </tr>
 <% end %>
 
 <%= will_paginate  @items %>
