@@ -9,6 +9,14 @@ class UsersController < ApplicationController
     redirect_to users_url
 
   end
+  def my_review
+    @user=User.find(params[:id])
+    if current_user==nil ||  @user.id!=current_user.id
+    redirect_to users_url
+    end
+
+
+  end
   
   def index
    

@@ -8,7 +8,7 @@
             
         </div>
         <div class="col-md-3">
-            <h4><strong>Price: <i class="fa fa-usd" aria-hidden="true"></i></strong> <%= review.price %></h4>
+            <h4><strong><%= t(:price) %> <i class="fa fa-usd" aria-hidden="true"></i></strong> <%= review.price %></h4>
         </div>
     </div>
     
@@ -19,7 +19,7 @@
          </div> 
          
          <div class="col-md-3">
-            <strong>Store:</strong> <%= review.store %>, <%= review.store_location %>
+            <strong><%= t(:store)%>:</strong> <%= review.store %>, <%= review.store_location %>
        
             <p>
             <p class="Like">

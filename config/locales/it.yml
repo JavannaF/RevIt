@@ -35,6 +35,7 @@ it:
   or: "o"
   as: "come"
   new: "Nuovo"
+  my: "Le mie"
   nosearchitem: "Nessun Articolo corrisponde alla ricerca"
   nosearchuser: "Nessun Utente corrisponde alla ricerca"
   nosearchowner: "Nessun Proprietario corrisponde alla ricerca"
@@ -49,3 +50,4 @@ it:
   bestprice: "Miglior Prezzo"
   thebest: "Il Meglio"
   mostcommented: "I più commentati"
+  myreverrmsg: "Non hai i permessi necessari per stare qui"

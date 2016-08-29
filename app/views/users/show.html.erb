@@ -1,7 +1,12 @@
 
 <div class="container">
 <% provide(:title, @user.name) %>
-<div>
+<% if current_user!=nil &&  @user.id==current_user.id %>
+
+   
+	<%= link_to t(:my)+" "+t(:reviews), "/users/"+@user.id.to_s+"/my_review" %>
+ <% end %>
+  <div>
 <% if @user.passive_feedbacks.empty? %>
 <% if current_user!=nil &&  @user.id!= current_user.id %>
    <%= form_tag(feedbacks_create_path, method: :post) do%>
@@ -37,6 +42,7 @@
     <% end %>
   </div>
 
+
   <%= link_to 'Home', home_path %>
   <%= link_to "Users",    users_path %>
   <% if logged_in? %>
@@ -45,8 +51,9 @@
   <%= link_to "Log out", logout_path, method: :delete %>
   <%= link_to "Profile", current_user %>
   <% else %>
-  <% end %>
+  
   <%= link_to "Log in", login_path %>
+<% end %>
 </div>
 
 
