@@ -41,7 +41,7 @@ it:
   nosearchowner: "Nessun Proprietario corrisponde alla ricerca"
   view: "Vedi"
   address: "Indirizzo"
-    reportab: "Segnala Abuso"
+  reportab: "Segnala Abuso"
   save: "Salva"
   noevyet: "Non ancora valutato"
   uyp: "Modifica il tuo Profilo"
