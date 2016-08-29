@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   
   get 'sessions/new'
-
+  get 'users/:id/my_review'=> 'users#my_review'
   get  'signup' => 'users#new'
   get  'signupowners' => 'owners#new'
   get  'categories' => 'items#categories'

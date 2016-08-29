@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :feedbacks, through: :active_feedbacks, source: :receiver
   #GIVER DELLE VALUTAZIONI
   has_many :active_evaluations, class_name: "Evaluation",
-  				foreign_key: "user_id",
+  				foreign_key: "evaluater_id",
   				dependent: :destroy
   has_many :evaluations, through: :active_evaluations, source: :evaluated
 
