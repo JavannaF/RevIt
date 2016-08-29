@@ -38,7 +38,15 @@ RSpec.describe "routes for users", :type => :routing do
                       :action => "destroy",
                       :id => "1"
                   )
-        end               
+        end   
+
+        it "update user" do 
+           expect(:put => "/users/1").to route_to(
+                      :controller => "users",
+                      :action => "update",
+                      :id => "1"
+                  )
+        end            
 
         it "create user" do 
            expect(:post => "/users").to route_to(

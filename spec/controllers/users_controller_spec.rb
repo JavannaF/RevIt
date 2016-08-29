@@ -64,6 +64,12 @@ RSpec.describe UsersController, type: :controller do
       end
      end
     end
+    
+    it "show my review" do
+      get :my_review, id:@user
+      assert_response :success
+      
+    end
 
 
  private

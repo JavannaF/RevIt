@@ -53,7 +53,8 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
-
+  def new_own
+  end
   def create_own
     owner = Owner.find_by(email: params[:session][:email].downcase)
     if owner && owner.authenticate(params[:session][:password])
