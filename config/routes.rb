@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :reports
   post 'feedbacks/create'
   post 'evaluations/create'
   get 'owners/new'
   get 'search/index'
   get 'password_resets/new'
-
+  post 'reports/create'
   get 'password_resets/edit'
   
   get 'sessions/new'

@@ -2,6 +2,12 @@ class Review < ActiveRecord::Base
   acts_as_votable
   belongs_to :item
   belongs_to :user
+  #Report#
+  has_many :passive_reports, class_name: "Report",
+  				foreign_key: "review_id",
+				dependent: :destroy
+  has_many :reporters, through: :passive_reports, source: :reporter
+  #end#Report#
   geocoded_by :store_location
   after_validation :geocode, :if => :store_location_changed?
   default_scope -> { order(created_at: :desc) }

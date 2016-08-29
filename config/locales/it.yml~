@@ -35,11 +35,13 @@ it:
   or: "o"
   as: "come"
   new: "Nuovo"
+  my: "Le mie"
   nosearchitem: "Nessun Articolo corrisponde alla ricerca"
   nosearchuser: "Nessun Utente corrisponde alla ricerca"
   nosearchowner: "Nessun Proprietario corrisponde alla ricerca"
   view: "Vedi"
   address: "Indirizzo"
+    reportab: "Segnala Abuso"
   save: "Salva"
   noevyet: "Non ancora valutato"
   uyp: "Modifica il tuo Profilo"
@@ -50,3 +52,5 @@ it:
   thebest: "Il Meglio"
   mostcommented: "I più commentati"
   myreverrmsg: "Non hai i permessi necessari per stare qui"
+
+

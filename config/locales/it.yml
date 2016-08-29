@@ -41,6 +41,7 @@ it:
   nosearchowner: "Nessun Proprietario corrisponde alla ricerca"
   view: "Vedi"
   address: "Indirizzo"
+  reportab: "Segnala Abuso"
   save: "Salva"
   noevyet: "Non ancora valutato"
   uyp: "Modifica il tuo Profilo"
@@ -51,3 +52,5 @@ it:
   thebest: "Il Meglio"
   mostcommented: "I più commentati"
   myreverrmsg: "Non hai i permessi necessari per stare qui"
+
+

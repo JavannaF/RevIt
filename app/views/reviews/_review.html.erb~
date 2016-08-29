@@ -8,7 +8,7 @@
             
         </div>
         <div class="col-md-3">
-            <h4><strong>Price: <i class="fa fa-usd" aria-hidden="true"></i></strong> <%= review.price %></h4>
+            <h4><strong><%= t(:price) %> <i class="fa fa-usd" aria-hidden="true"></i></strong> <%= review.price %></h4>
         </div>
     </div>
     
@@ -48,6 +48,12 @@
         Posted <%= time_ago_in_words(review.created_at) %> ago.
     </p>
     
+      <%= form_tag(reports_create_path, method: :post) do%>
+      <%= hidden_field_tag 'user_id', current_user.id %>
+      <%= hidden_field_tag 'review_id', review.id %>
+      <%= submit_tag I18n.t("reportab") %>
+      
+<%end%>
     <% if review.user == current_user %>
     
     <p>
@@ -73,11 +79,5 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="app/assets/javascripts/bootstrap.min.js"></script>
-
-
-
-
-
-
 
 
