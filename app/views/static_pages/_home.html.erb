@@ -14,9 +14,9 @@
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
                             <h2><%= t(:thebest)%></h2>
-                            <% @best1 = Item.order(:avg_rating).first %>
-                            <% @best2 = Item.order(:avg_rating).second %>
-                            <% @best3 = Item.order(:avg_rating).third %>
+                            <% @best1 = Item.reorder(:avg_rating).reverse_order.first %>
+                            <% @best2 = Item.reorder(:avg_rating).reverse_order.second %>
+                            <% @best3 = Item.reorder(:avg_rating).reverse_order.third %>
 
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -61,7 +61,7 @@
                     <h2><%= t(:mostcommented)%></h2>
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item1 = Item.order(:count).first %>
+                            <% @item1 = Item.reorder(:count).reverse_order.first %>
                             <% if !@item1.picture.present? %>
                                     <%= link_to image_tag("http://placehold.it/320x150"), @item1 %> 
                             <% else %>
@@ -82,7 +82,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item2 = Item.order(:count).second %>
+                            <% @item2 = Item.reorder(:count).reverse_order.second %>
                             <% if !@item2.picture.present? %>
                                     <%= link_to image_tag("http://placehold.it/320x150"), @item2 %> 
                             <% else %>
@@ -105,7 +105,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item3 = Item.order(:count).third %>
+                            <% @item3 = Item.reorder(:count).reverse_order.third %>
                             <% if !@item3.picture.present? %>
                                     <%= link_to image_tag("http://placehold.it/320x150"), @item3 %> 
                             <% else %>
@@ -127,7 +127,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item4 = Item.order(:count).fourth %>
+                            <% @item4 = Item.reorder(:count).reverse_order.fourth %>
                             <% if !@item4.picture.present? %>
                                     <%= link_to image_tag("http://placehold.it/320x150"), @item4 %> 
                             <% else %>
@@ -150,7 +150,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item5 = Item.order(:count).fifth %>
+                            <% @item5 = Item.reorder(:count).reverse_order.fifth %>
                             <% if !@item5.picture.present? %>
                                     <%= link_to image_tag("http://placehold.it/320x150"), @item5 %> 
                             <% else %>
@@ -173,7 +173,7 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <% @item6 = Item.order(:count).offset(1).fifth %>
+                            <% @item6 = Item.reorder(:count).reverse_order.offset(1).fifth %>
                             <% if !@item6.picture.present? %>
                                     <%= link_to image_tag("http://placehold.it/320x150"), @item6 %> 
                             <% else %>

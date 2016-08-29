@@ -14,8 +14,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
-    @user = User.find(params[:id])
-    @reviews = @user.review.paginate(page: params[:page]).per_page(10)
+    @item = Item.find(params[:item_id])
+    @reviews = @item.reviews.find(params[:id])
   end
 
   # GET /reviews/new
@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
       lower_price(@item)
       media_stellina(@item)
       best_price_location(@item)
-      @item.increment(@item.count, by = 1)
+      @item.increment!(:count, by = 1)
       redirect_to @item
     else
       flash[:error] = "review was not posted!"
@@ -79,7 +79,7 @@ class ReviewsController < ApplicationController
     lower_price(@item)
     media_stellina(@item)
     best_price_location(@item)
-    @item.decrement(@item.count, by = 1)
+    @item.decrement!(:count, by = 1)
     redirect_to item_path(@item)
   end
   

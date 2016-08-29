@@ -1,3 +1,4 @@
+<div class="container">
 <% provide(:title, "Edit user") %>
 <h1>Update your owner's profile</h1>
 
@@ -25,12 +26,28 @@
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+<<<<<<< HEAD
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= f.submit t(:save), class: "btn btn-primary" %>
+=======
+        
+      <p></p>  
+        
+      <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+              <%= f.submit "Save changes", class: "btn btn-primary" %>
+          </div>
+          <div class="col-md-4">
+          </div>
+      </div>
+>>>>>>> d095146338c38e2acd23142a1a6281e2a0f8b5f9
     <% end %>
 
     <div class="gravatar_edit">
       <%= gravatar_for @owner %>
       <a href="http://gravatar.com/emails" target=_blank>change</a>
     </div>
+</div>
   

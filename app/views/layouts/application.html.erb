@@ -78,15 +78,19 @@
             <div class="col-lg-6">
                 <h1>RevIt</h1>
             </div>
-        
-                       
-            <div class="col-sm-4">
-                <div class="btn-group open">
-                    <%= link_to "Log out", logoutowners_path, method: :delete, class: "btn btn-primary" %>
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                        <%= link_to gravatar_for(@owner), @owner %> 
+                        <%= @owner.name %>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li><%= link_to "   Profile", current_owner, class: "fa fa-fw fa-user" %></li>
+                        <li><%= link_to "   Settings  ", edit_owner_path(current_owner), class: "fa fa-fw fa-gear" %></li>
+                        <li role="presentation" class="divider"></li>
+                        <li><%= link_to "   Log out  ", logoutowners_path, method: :delete, class: "fa fa-fw fa-power-off" %></li>
+                    </ul>
                 </div>
-            </div>
-
-                        
             </div>
         </div>
     </div>
@@ -188,12 +192,13 @@
                         </li>
                         
                         <li>
-                        <%= form_tag(search_index_path, :method => "get", id: "search-form") do %>
-                        <%= text_field_tag :search, params[:search], placeholder: t(:search)+" "+t(:user)+" "+t(:or)+" "+t(:owners) %>
-                        <%= submit_tag t(:search) %>
-                        <% end %>
-                        <%= link_to t(:advsearch), items_search_path%></li>
-                        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+
+                            <%= form_tag(search_index_path, :method => "get", id: "search-form") do %>
+                            <%= text_field_tag :search, params[:search], placeholder: t(:search)+" "+t(:user)+" "+t(:or)+" "+t(:owners) %>
+                            <%= link_to "", items_search_path, class: "fa fa-bars fa-2x" %>
+                            <% end %>
+                        </li>
+
                 </ul>
                 
             </div>

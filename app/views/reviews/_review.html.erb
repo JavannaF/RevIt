@@ -48,7 +48,7 @@
         Posted <%= time_ago_in_words(review.created_at) %> ago.
     </p>
     
-    <% if review.user == current_user || admin_user %>
+    <% if review.user == current_user %>
     
     <p>
         <%= link_to 'Destroy ', [review.item, review],

@@ -1,4 +1,6 @@
+<div class="container">
 <% provide(:title, "Edit user") %>
+
 <h1><%= t(:uyp) %></h1>
 
 
@@ -6,6 +8,7 @@
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label t(:name) %>
+
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
@@ -17,11 +20,24 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit t(:save), class: "btn btn-primary" %>
-    <% end %>
+        
+      <p></p>
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <%= f.submit t(:save), class: "btn btn-primary" %>
+        </div>
+        <div class="col-md-4">
+        </div>
+      </div>
 
-    <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target=_blank>change</a>
-    </div>
+    <% end %>
   
+    <div class="pull-left">
+        <div class="gravatar_edit">
+            <%= gravatar_for @user %>
+                <a href="http://gravatar.com/emails" target=_blank>change</a>
+        </div>
+    </div>
+</div>

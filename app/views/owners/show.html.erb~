@@ -1,9 +1,8 @@
-<% provide(:title, @owner.name) %>
-<h1>
-  <%= gravatar_for @owner %>
-  <%= @owner.name %>
-</h1>
+<div class="container">
+    <% provide(:title, @owner.name) %>
+
 <div>
+<<<<<<< HEAD
 <% if @owner.passive_evaluations.empty? %>
 <% if current_user!=nil%>
 Be the first! Evaluate: 
@@ -15,22 +14,39 @@ Be the first! Evaluate:
    <%else%> 
   Evaluatated :<%=@owner.passive_evaluations.average(:value)%>/10 
 <% if current_user!=nil && !@owner.passive_evaluations.exists?(['user_id LIKE ?',current_user.id])%>      
+=======
+    <% if @owner.passive_evaluations.empty? %>
+    <% if current_user!=nil%>
+    Be the first! Evaluate: 
+    
+    <%= form_tag(evaluations_create_path, method: :post)%>
+    <%= hidden_field_tag 'owner_id', @owner.id %>
+    <%=number_field_tag 'value', 1, in: 1...11, step:1%>
+    <%= submit_tag 'Go!' %>
+    <%else%>t(:noevyet)%end%>  
+    <%else%> 
+    Evaluatated :<%=@owner.passive_evaluations.average(:value)%>/10 
+    <% if current_user!=nil && !@owner.passive_evaluations.exists?(['user_id LIKE ?',current_user.id])%>      
+>>>>>>> d095146338c38e2acd23142a1a6281e2a0f8b5f9
       <%= form_tag(evaluations_create_path, method: :post)%>
-<%= hidden_field_tag 'owner_id', @owner.id %>
-<%=number_field_tag 'value', 1, in: 1...11, step:1%>
- <%= submit_tag 'Go!' %>
-<%end%> <%end%></div>
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@owner.latitude}%2C#{@owner.longitude}" %>
+    <%= hidden_field_tag 'owner_id', @owner.id %>
+    <%=number_field_tag 'value', 1, in: 1...11, step:1%>
+    <%= submit_tag 'Go!' %>
+<%end%>
+<%end%>
+</div>
 
-<div class="col-md-8">
-    <% if @owner.adds.any? %>
-      <h3>Adds (<%= @owner.adds.count %>)</h3>
-      <ol class="adds">
-        <%= render @adds %>
-      </ol>
-      <%= will_paginate @adds %>
-    <% end %>
-  </div>
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@owner.latitude}%2C#{@owner.longitude}" %>
+
+    <div class="col-md-8">
+        <% if @owner.adds.any? %>
+            <h3>Adds (<%= @owner.adds.count %>)</h3>
+            <ol class="adds">
+                <%= render @adds %>
+            </ol>
+            <%= will_paginate @adds %>
+        <% end %>
+    </div>
 
 
 <%= link_to 'Home', home_path %>
@@ -43,3 +59,4 @@ Be the first! Evaluate:
   <% else %>
   <% end %>
   <%= link_to "Log in", loginowners_path %>
+</div>
