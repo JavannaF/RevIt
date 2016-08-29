@@ -12,7 +12,7 @@
 
                     <div class="col-md-12">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
+                            <% if Item.count >6 %>
                             <h2><%= t(:thebest)%></h2>
                             <% @best1 = Item.reorder(:avg_rating).reverse_order.first %>
                             <% @best2 = Item.reorder(:avg_rating).reverse_order.second %>
@@ -192,8 +192,9 @@
                                 </p>
                             </div>
                         </div>
+            
                     </div>
-
+                 <% end %>
                 </div>
 
             </div>

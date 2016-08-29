@@ -33,12 +33,12 @@ RSpec.describe Item, type: :model do
   end
   
   it "is invalid with a name too long" do
-    assert !FactoryGirl.build(:item, name: "a"*51).valid?
+    assert !FactoryGirl.build(:item, name: "a"*101).valid?
   end
   
    
   it "Name too long" do
-    item = FactoryGirl.build(:item, name: ""*51)
+    item = FactoryGirl.build(:item, name: ""*101)
     expect(item.valid?).to eq false
   end
   

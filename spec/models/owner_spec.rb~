@@ -7,7 +7,7 @@ RSpec.describe Owner, type: :model do
  
 
   it "has a valid factory" do
-    assert FactoryGirl.create(:user).valid?
+    assert FactoryGirl.create(:owner).valid?
   end
   
   it "has none to begin with" do
@@ -25,7 +25,7 @@ RSpec.describe Owner, type: :model do
     expect(owner.valid?).to eq false
   end
   
-  it "Username too long" do
+  it "ownername too long" do
     owner = FactoryGirl.build(:owner, name: ""*81)
     expect(owner.valid?).to eq false
   end
@@ -45,7 +45,7 @@ RSpec.describe Owner, type: :model do
   
   it "email validation should accept valid addresses" do
     @owner = FactoryGirl.create(:owner) 
-    valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
+    valid_addresses = %w[owner@example.com owner@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
       @owner.email = valid_address
@@ -54,7 +54,7 @@ RSpec.describe Owner, type: :model do
   end
   
   
-  it "is invalid without a username" do
+  it "is invalid without a ownername" do
     assert !FactoryGirl.build(:owner, name: nil).valid?
   end
   
@@ -74,5 +74,61 @@ RSpec.describe Owner, type: :model do
     assert !FactoryGirl.build(:owner, password: "pr").valid?
   end
   
+  it "is invalid with a name too long" do
+    assert !FactoryGirl.build(:owner, name: "a"*51).valid?
+  end
+  
+   
+  it "Name too long" do
+    item = FactoryGirl.build(:owner, name: ""*51)
+    expect(item.valid?).to eq false
+  end
+ 
+  it "is invalid without a ownername during the update" do
+	owner = FactoryGirl.build(:owner) 
+	owner.update_attributes(:ownername => nil) 
+	expect(owner.valid?).to eq false
+  end 
+  
+  it "is invalid without a email during the update" do
+	owner = FactoryGirl.build(:owner) 
+	owner.update_attributes(:email => nil) 
+	expect(owner.valid?).to eq false
+  end
+ 
+  it "is invalid without a password during the update" do
+	owner = FactoryGirl.build(:owner) 
+	owner.update_attributes(:password => nil) 
+	expect(owner.valid?).to eq false
+  end
+  
+  it "is invalid without a password_confirmation during the update" do
+	owner = FactoryGirl.build(:owner) 
+	owner.update_attributes(:password_confirmation => nil) 
+	expect(owner.valid?).to eq false
+  end     
+  
+  it "Invalid email" do
+    owner =FactoryGirl.build(:owner, email: "invalid")
+    expect(owner.valid?).to eq false
+  end
+  
+  it "Email uniqness" do
+    owner = FactoryGirl.create(:owner) 
+    owner.save!
+    owner2 = FactoryGirl.create(:owner) 
+    owner2.email = owner.email
+    expect(owner2.valid?).to eq false
+  end
+  
+  it "email validation should accept valid addresses" do
+    @owner = FactoryGirl.create(:owner) 
+    valid_addresses = %w[owner@example.com owner@foo.COM A_US-ER@foo.bar.org
+                         first.last@foo.jp alice+bob@baz.cn]
+    valid_addresses.each do |valid_address|
+      @owner.email = valid_address
+      assert @owner.valid?, "#{valid_address.inspect} should be valid"
+    end
+  end
     
 end

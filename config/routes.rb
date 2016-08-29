@@ -33,7 +33,8 @@ Rails.application.routes.draw do
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'signout'
   
-  resources :feedbacks
+  resources :feedbacks,  only: [:new,:create]
+  resources :evaluation, only: [:new, :create]
   resources :contacts
   resources :owners
   resources :users

@@ -1,18 +1,19 @@
 require "rails_helper"
-
+require 'rails-i18n'
 RSpec.describe "owner management", :type => :request do
   
   it "after signup redirect to the home page" do
     visit "/signupowners"
     #dev = FactoryGirl.create(:owner)
-    fill_in "Name", :with => "Matteo"
+    find('#owner_name', visible: false).set 'Matteo'
     fill_in "Website" , :with => "www.ok.it"
-    fill_in "Description", :with => "siamo aperti"
-    fill_in "Address" , :with => "velletri"
+    find('#owner_description', visible: false).set "siamo aperti"
+    find('#owner_address', visible: false).set :with => "velletri"
     fill_in "Email", :with => "mhfdgdj@gmail.com"
     fill_in "Password", :with => "muromuro"
     fill_in "Confirmation", :with => "muromuro"
-    click_button "Create my account"
+    
+    click_button "Create"
 
     expect(current_path).to eq (root_path)
     #expect(page).to have_content "Now let's set up your skills"
@@ -23,10 +24,10 @@ RSpec.describe "owner management", :type => :request do
   it "invalid signup (name too long)" do
     visit "/signupowners"
     #dev = FactoryGirl.create(:owner)
-    fill_in "Name", :with => "Maaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    find('#owner_name', visible: false).set  "Maaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     fill_in "Website" , :with => "www.ok.it"
-    fill_in "Description", :with => "siamo aperti"
-    fill_in "Address" , :with => "velletri"
+    find('#owner_description', visible: false).set "siamo aperti"
+    find('#owner_address', visible: false).set  "velletri"
     fill_in "Email", :with => "mhfdgdj@gmail.com"
     fill_in "Password", :with => "muromuro"
     fill_in "Confirmation", :with => "muromuro"
@@ -49,15 +50,15 @@ RSpec.describe "owner management", :type => :request do
   it "invalid signup (Password confirmation doesn't match Password)" do
     visit "signupowners"
     #dev = FactoryGirl.create(:owner)
-    fill_in "Name", :with => "matteo"
+    find('#owner_name', visible: false).set  "matteo"
     fill_in "Website" , :with => "www.ok.it"
-    fill_in "Description", :with => "siamo aperti"
-    fill_in "Address" , :with => "velletri"
+    find('#owner_description', visible: false).set  "siamo aperti"
+    find('#owner_address', visible: false).set  "velletri"
     fill_in "Email", :with => "mhfdgdj@gmail.com"
     fill_in "Password", :with => "muromuro"
     fill_in "Confirmation", :with => "muromuroo"
     click_button "Create my account"
-    expect(current_path).to eq "/"
+    expect(current_path).to eq "/owners"
 
     
   end

@@ -45,7 +45,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
     describe "DELETE destroy" do
-     context "admin" do
+     context "user" do
       it "destroy only if admin" do
         count = User.count
         @user.admin = true
@@ -63,6 +63,12 @@ RSpec.describe UsersController, type: :controller do
     	expect(User.count).to eq(count)
       end
      end
+    end
+    
+    it "show my review" do
+      get :my_review, id:@user
+      assert_response :success
+      expect(response).to redirect_to users_url
     end
 
 

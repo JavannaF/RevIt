@@ -54,5 +54,13 @@ RSpec.describe "routes for users", :type => :routing do
                       :action => "create",
                       
                   )
-        end     
+        end  
+
+        it "show user review" do 
+            expect(:get => "/users/1/my_review").to route_to(
+                       :controller => "users",
+                       :action => "my_review",
+                       :id => "1"
+                  )
+        end   
 end
