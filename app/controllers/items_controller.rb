@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     else
      if (params[:name] || params[:avg_rating]|| params[:min_price] || params[:max_price]||params[:category_search])
        @items2 = Item.search(params[:name], params[:avg_rating], params[:min_price], params[:max_price]).all
-       category_search_var=params[:category_search].strip.downcase.delete("^a-z")
+       category_search_var=params[:category_search]
        if(category_search_var!="selectone")           
            @items=[]
            @items2.each do |item|
