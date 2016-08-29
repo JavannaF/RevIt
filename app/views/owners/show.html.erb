@@ -2,6 +2,7 @@
     <% provide(:title, @owner.name) %>
 
 <div>
+
     <% if @owner.passive_evaluations.empty? %>
     <% if current_user!=nil%>
     Be the first! Evaluate: 
@@ -10,10 +11,11 @@
     <%= hidden_field_tag 'owner_id', @owner.id %>
     <%=number_field_tag 'value', 1, in: 1...11, step:1%>
     <%= submit_tag 'Go!' %>
-    <%else%>No evaluated Yet<%end%>  
+    <%else%>t(:noevyet)%end%>  
     <%else%> 
     Evaluatated :<%=@owner.passive_evaluations.average(:value)%>/10 
     <% if current_user!=nil && !@owner.passive_evaluations.exists?(['user_id LIKE ?',current_user.id])%>      
+
       <%= form_tag(evaluations_create_path, method: :post)%>
     <%= hidden_field_tag 'owner_id', @owner.id %>
     <%=number_field_tag 'value', 1, in: 1...11, step:1%>

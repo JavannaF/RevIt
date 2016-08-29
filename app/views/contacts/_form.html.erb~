@@ -2,14 +2,14 @@
 
 <%= form_for(@contact) do |f| %>
   
-    <%= f.label t(:title) %>
+    <%= f.label :Title %>
     <%= f.text_field :title, class: 'form-control' %>
   
   
-    <%= f.label t(:description) %>
+    <%= f.label :Description %>
     <%= f.text_field :description, class: 'form-control' %>
     
-    <%= f.label t(:author) %>
+    <%= f.label :Author %>
     <%= f.text_field :author, class: 'form-control' %>
 
     <%= f.submit "Send", class: "btn btn-primary" %>

@@ -1,10 +1,10 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
+<h1><%= t(:lista)+" "+t(:items) %></h1>
     
     <div class="text-right">
-        <a class="btn btn-primary" href="/items/new">New Item </span></a>
+        <a class="btn btn-primary" href="/items/new"><%= t(:new)+" "+t(:item) %></span></a>
     </div>
     
     
@@ -26,6 +26,9 @@
             <div class="review-rating" data-score="<%= item.avg_rating %>"></div> <%= item.avg_rating %> stars
 
             <p><%= item.description %></p>
+
+            <%= link_to t(:view)+" "+t(:item), item_path(item.id) ,class: "btn btn-primary" %>
+
         </div>
             
     </div>
@@ -36,7 +39,7 @@
 <% end %>
 
  <tr> <% if !@items.present? %>
-  <p>There are no items matching these features.</p> </tr>
+  <p><%= t(:nosearchitem) %></p> </tr>
 <% end %>
 
 <%= will_paginate  @items %>

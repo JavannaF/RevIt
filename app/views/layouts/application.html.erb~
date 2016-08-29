@@ -34,8 +34,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+     <%=link_to("English", "http://localhost:3000"+"#{request.env['PATH_INFO']}")%>
+     <%=link_to("Italian", "http://localhost.it:3000"+"#{request.env['PATH_INFO']}")%>
     <% if !logged_in? && !logged_in_owner? %>
     <!-- Header -->
     <div class="container">
@@ -59,7 +64,7 @@
 
             <div class="col-sm-4">
                 <div class="btn-group open">
-                    <a class="btn btn-primary" href="/loginowners"><i class="fa fa-user fa-fw"></i> Login Owners</a>
+                    <a class="btn btn-primary" href="/loginowners"><i class="fa fa-user fa-fw"></i> Login <%=t(:owners)%></a>
                 </div>
             </div>
             
@@ -73,33 +78,41 @@
             <div class="col-lg-6">
                 <h1>RevIt</h1>
             </div>
-        
-                       
-            <div class="col-sm-4">
-                <div class="btn-group open">
-                    <%= link_to "Log out", logoutowners_path, method: :delete, class: "btn btn-primary" %>
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                        <%= link_to gravatar_for(@owner), @owner %> 
+                        <%= @owner.name %>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li><%= link_to "   Profile", current_owner, class: "fa fa-fw fa-user" %></li>
+                        <li><%= link_to "   Settings  ", edit_owner_path(current_owner), class: "fa fa-fw fa-gear" %></li>
+                        <li role="presentation" class="divider"></li>
+                        <li><%= link_to "   Log out  ", logoutowners_path, method: :delete, class: "fa fa-fw fa-power-off" %></li>
+                    </ul>
                 </div>
-            </div>
-
-                        
             </div>
         </div>
     </div>
     <% else if logged_in? %>
-      <div class="container">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <h1>RevIt</h1>
+            <div class="col-md-10">
+                <Strong><h1>RevIt</h1></Strong>
             </div>
-        
-                       
-            <div class="col-sm-4">
-                <div class="btn-group open">
-                    <%= link_to "Log out", logout_path, method: :delete, class: "btn btn-primary" %>
+            <div class="col-md-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                        <%= link_to gravatar_for(current_user), current_user %> 
+                        <%= current_user.name %>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li><%= link_to "   Profile", current_user, class: "fa fa-fw fa-user" %></li>
+                        <li><%= link_to "   Settings  ", edit_user_path(current_user), class: "fa fa-fw fa-gear" %></li>
+                        <li role="presentation" class="divider"></li>
+                        <li><%= link_to "   Log out  ", logout_path, method: :delete, class: "fa fa-fw fa-power-off" %></li>
+                    </ul>
                 </div>
-            </div>
-
-                        
             </div>
         </div>
     </div>
@@ -127,61 +140,72 @@
                                 <a href="/home"> Home </a>
                             </li>
                             <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Categories <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><%= t(:categories) %> <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
-                                    <a href="http://localhost:3000/items?category=booksaudible">Books & Audible</a>
+                                  <a href="/items?category=booksaudible"><i class="fa fa-book" aria-hidden="true"></i><%= t(:ba) %></a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=moviesmusicgames">Movies, Music & Games</a>
+                             <a href="/items?category=moviesmusicgames"><i class="fa fa-film" aria-hidden="true"></i><%= t(:mmg) %></a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=electronicscomputers">Electronics & Computer</a>
+                                    <a href="/items?category=electronicscomputers"><i class="fa fa-laptop" aria-hidden="true"></i> <%= t(:ec) %></a>
                                 </li>
                                 <li>
-                                    <a  href="http://localhost:3000/items?category=homegardentools">Home, Garden & Tools</a>
+                                    <a  href="/items?category=homegardentools"><i class="fa fa-home" aria-hidden="true"></i>      <%= t(:hgt) %></a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=beautyhealthgrocery">Beauty, Health & Grocery</a>
+                                    <a href="/items?category=beautyhealthgrocery"><i class="fa fa-heart-o" aria-hidden="true"></i> <%= t(:bhg) %></a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=toyskidsbaby">Toys, Kids & Baby</a>
+                                    <a href="/items?category=toyskidsbaby"><i class="fa fa-child" aria-hidden="true"></i>        <%= t(:tkb) %></a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=clothingshoesjewelry">Clothing, Shoes & Jewelry</a>
+                                    <a href="/items?category=clothingshoesjewelry"><i class="fa fa-shopping-bag" aria-hidden="true"></i><%= t(:csj) %></a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=sportsoutdoors">Sports & Outdoors</a>
+                                    <a href="/items?category=sportsoutdoors"><i class="fa fa-futbol-o" aria-hidden="true"></i>   <%= t(:so) %></a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost:3000/items?category=automotiveindustrial">Automotive & Industrial</a>
+                                    <a href="/items?category=automotiveindustrial"><i class="fa fa-car" aria-hidden="true"></i><%= t(:ai) %></a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/items"> Items </a>
+                            <a href="/items"> <%= t(:items) %> </a>
                         </li>
                         <li>
-                            <a href="#"> Contact </a>
+                            <a href="/contacts/new"> <%= t(:contact) %></a>
                         </li>
                 </ul> 
-                    
+                
+                
+                
+               
                 <ul class="nav navbar-nav navbar-right">    
-                    
+                        
                         <li>
-                            <a href="/signup"> Signup </a>
+                            <a href="/signup"> <%= t(:signup) %> </a>
                         </li>
                         <li>
-                            <a href="/signupowners"> Signup Owners </a>
+                            <a href="/signupowners"><%=  t(:signup)+" "+t(:as)+" "+t(:owner) %></a>
                         </li>
                         
                         <li>
+<<<<<<< HEAD
                         <%= form_tag(search_index_path, :method => "get", id: "search-form") do %>
-                        <%= text_field_tag :search, params[:search], placeholder: "Search User or Owner" %>
-                        <%= submit_tag "Search" %>
+                        <%= text_field_tag :search, params[:search], placeholder: t(:search)+" "+t(:user)+" "+t(:or)+" "+t(:owners) %>
+                        <%= submit_tag t(:search) %>
                         <% end %>
-                        <%= link_to "AdvancedSearch", items_search_path%></li>
+                        <%= link_to t(:advsearch), items_search_path%></li>
                         <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+=======
+                            <%= form_tag(search_index_path, :method => "get", id: "search-form") do %>
+                            <%= text_field_tag :search, params[:search], placeholder: t(:search)+" "+t(:user)+" "+t(:or)+" "+t(:owners) %>
+                            <%= link_to "", items_search_path, class: "fa fa-bars fa-2x" %>
+                            <% end %>
+                        </li>
+>>>>>>> d095146338c38e2acd23142a1a6281e2a0f8b5f9
                 </ul>
                 
             </div>
@@ -214,6 +238,13 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="/javascripts/bootstrap.min.js"></script>
 
+    <script>
+        $(document).ready(function(){
+        $(".dropdown-toggle").dropdown();
+        });
+    </script>
 
 </body>
 </html>
+
+

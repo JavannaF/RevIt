@@ -1,7 +1,7 @@
 <% provide(:title, 'All users') %>
-<h1>All users</h1>
- <tr> <% if !@items.present? %>
-  <p>There are no items matching these features.</p> </tr>
+<h1><%= t(:lista)+" "+t(:users) %></h1>
+ <tr> <% if !@users.present? %>
+  <p>There are no users matching this name.</p> </tr>
 <% end %>
 <%= will_paginate %>
 <ul class="users">

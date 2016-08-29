@@ -1,11 +1,11 @@
-<% provide(:title, 'Sign up') %>
-<h2>&nbsp&nbsp&nbspSign up</h2>
+<% provide(:title, 'Sign Up') %>
+<h2>&nbsp&nbsp&nbsp<%=t(:signup)%></h2>
 
 <div class="container">
     <%= form_for(@owner) do |f| %>
         <%= render 'shared/error_messages',object: f.object %>
 
-        <%= f.label :name %>
+        <%= f.label t(:name) %>
         <%= f.text_field :name , class: 'form-control'%>
 
         <%= f.label :email %>
@@ -14,10 +14,10 @@
         <%= f.label :website %>
         <%= f.text_field :website , class: 'form-control'%>
 
-        <%= f.label :description %>
+        <%= f.label t(:description) %>
         <%= f.text_field :description , class: 'form-control'%>
  
-        <%= f.label :address %>
+        <%= f.label t(:address) %>
         <%= f.text_field :address , class: 'form-control'%>
 
         <%= f.label :password %>
@@ -28,7 +28,7 @@
 
 
 
-        <%= f.submit "Create my account", class: "btn btn-primary" %>
+        <%= f.submit t(:create), class: "btn btn-primary" %>
             
             
     

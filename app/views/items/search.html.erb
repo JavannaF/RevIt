@@ -1,20 +1,21 @@
 <div class="container">
 <div class="well">
     
-    <strong><h3>Advanced research</h3></strong>
+    <strong><h3><%= t(:search)+" "+t(:items)%></h3></strong>
     
    
     <%= form_tag items_path, method: :get,id:"search-form" do %>
 
-    <%= select_tag :category_search, options_for_select([ 'Select category','Books & Audible','Movies, Music & Games','Electronics & Computer','Home, Garden & Tools','Beauty, Health & Grocery','Toys, Kids & Baby','Clothing, Shoes & Jewelry', 'Sports & Outdoors', 'Automotive & Industrial' ]) , class: 'form-control' %>
 
-    <p><h4>Name</h4></p>
+    <%= select_tag :category_search, options_for_select([ 'Select category',t(:ba) , t(:mmg) , t(:ec) , t(:hgt) , t(:bhg) ,t(:tkb) ,t(:csj) , t(:so) ,t(:ai) ]) , class: 'form-control' %>
+
+    <p><h4><%=t(:name)%></h4></p>
     <%= text_field_tag :name, params[:name], class: 'form-control' %>
 
-    <p><h4>Minimum Rating</h4></p>
+    <p><h4><%=t(:minimum)%></h4></p>
     <%= number_field_tag :avg_rating, params[:avg_rating],min:0, max:5,:value =>0 ,:step => 0.1 , class: 'form-control' %>
 
-    <p><h4>Price Range</h4></p>
+    <p><h4><%=t(:ofprice)%></h4></p>
     <div class="form-inline">
         <strong>Min: </strong><%= number_field_tag :min_price, params[:min_price], min:0, :value =>0, :step=>0.1, class: 'form-control' %>
         <strong>Max: </strong><%= number_field_tag :max_price, params[:max_price], min:0, :value =>10000, :step=>0.1, class: 'form-control' %>
@@ -25,7 +26,7 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-4">
-            <%= submit_tag "Search", name: nil , class: "btn btn-primary" %>
+            <%= submit_tag t(:search), name: nil , class: "btn btn-primary" %>
         </div>
         <div class="col-md-4">
         </div>
