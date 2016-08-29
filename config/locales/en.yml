@@ -23,6 +23,8 @@ en:
   items: "Items"
   categories: "Categories"
   contact: "Contact"  
+  contactadmin: "Contact Admin" 
+  send: "Send"
   ba: "Books & Audible"
   mmg: "Movies, Music & Games"
   ec: "Electronics & Computer"

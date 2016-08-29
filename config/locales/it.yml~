@@ -1,7 +1,9 @@
 it:
   items: "Articoli"
   categories: "Categorie"
-  contact: "Contattaci"  
+  contact: "Contattaci" 
+  contactadmin: "Contatta gli Amministratori" 
+  send: "Invia"
   ba: "Libri & Audiolibri"
   mmg: "Film, Musica & Giochi"
   ec: "Elettronica & Computer"
@@ -46,3 +48,4 @@ it:
   reviews: "Recensioni"
   bestprice: "Miglior Prezzo"
   thebest: "Il Meglio"
+  mostcommented: "I più commentati"
