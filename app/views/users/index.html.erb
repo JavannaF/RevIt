@@ -4,10 +4,11 @@
 
 <% if !@users.present? %>
 <p>t:(nosearchuser)</p>
-
+<%end%>
 
 <ul class="users">
    <%= render @users %>
 </ul>
 
 <%= will_paginate %>
+
