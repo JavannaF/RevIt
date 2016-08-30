@@ -41,19 +41,6 @@
       <%= will_paginate @items %>
     <% end %>
   </div>
-
-
-  <%= link_to 'Home', home_path %>
-  <%= link_to "Users",    users_path %>
-  <% if logged_in? %>
-  <%= link_to "Settings", edit_user_path(current_user) %>
-  
-  <%= link_to "Log out", logout_path, method: :delete %>
-  <%= link_to "Profile", current_user %>
-  <% else %>
-  
-  <%= link_to "Log in", login_path %>
-<% end %>
 </div>
 
 

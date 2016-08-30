@@ -53,7 +53,7 @@ class ReportsController < ApplicationController
          @item=@review.item
          @user=current_user
          if !@user.active_reports.empty?
-          if @user.active_reports.exists?(['review_id LIKE ?',params[:review_id]])
+          if @user.active_reports.exists?(['reported_id LIKE ?',params[:review_id]])
            redirect_to "/items/"+@item.id.to_s
         end
       end
@@ -61,7 +61,7 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.permit(:review_id, :user_id)
+      params.permit(:reported_id, :reporter_id)
     end
     def admin_user
       if current_user!=nil

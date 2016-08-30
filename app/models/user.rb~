@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   				dependent: :destroy
   has_many :evaluations, through: :active_evaluations, source: :evaluated
   #REPORTER
-  has_many :active_reports, class_name: "Reports",
+  has_many :active_reports, class_name: "Report",
   				foreign_key: "user_id",
   				dependent: :destroy
   has_many :reports, through: :active_reports, source: :reported

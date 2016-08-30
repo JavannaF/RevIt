@@ -1,6 +1,6 @@
 
 <div class="container">
-
+<div class="well">
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -13,30 +13,42 @@
       </ul>
     </div>
   <% end %>
-
     
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: "custom-file-input" %>
-
     
     <%= f.label t(:name) %>
     <%= f.text_field :name, class: 'form-control' %>
   
     <%= f.label t(:description) %>
     <%= f.text_area :description, class: 'form-control' %>
-  
-   <%= f.label t(:categories) %>
-   <pre style="width:500px">
-   <%= f.check_box :tag_list, { :multiple => true }, 'booksaudible', nil%> <%=  t(:ba) %>         <%= f.check_box :tag_list, { :multiple => true }, 'beautyhealtgrocery', nil%> <%=  t(:bhg) %>
-   <%= f.check_box :tag_list, { :multiple => true }, 'moviesmusicgames', nil%> <%=  t(:mmg) %>  <%= f.check_box :tag_list, { :multiple => true }, 'toyskidsbaby', nil%> <%=  t(:tkb) %>
-   <%= f.check_box :tag_list, { :multiple => true }, 'electronicscomputers', nil%> <%=  t(:ec) %>     <%= f.check_box :tag_list, { :multiple => true }, 'clothingshoesjewelry', nil%> <%=  t(:csj) %>
-   <%= f.check_box :tag_list, { :multiple => true }, 'homegardentools', nil%> <%=  t(:hgt) %>     <%= f.check_box :tag_list, { :multiple => true }, 'sportsoutdoors', nil%> <%=  t(:so) %>
-   <%= f.check_box :tag_list, { :multiple => true }, 'automotiveindustrial', nil%> <%=  t(:ai) %>    
-   </pre>
+    
+    
+<div class="row">
+<div class="col-md-6">
+<%= f.label t(:categories) %>
+<pre style="width:500px">
+<%= f.check_box :tag_list, { :multiple => true }, 'booksaudible', nil%> <%=  t(:ba) %>             <%= f.check_box :tag_list, { :multiple => true }, 'beautyhealtgrocery', nil%> <%=  t(:bhg) %>
+<%= f.check_box :tag_list, { :multiple => true }, 'moviesmusicgames', nil%> <%=  t(:mmg) %>       <%= f.check_box :tag_list, { :multiple => true }, 'toyskidsbaby', nil%> <%=  t(:tkb) %>
+<%= f.check_box :tag_list, { :multiple => true }, 'electronicscomputers', nil%> <%=  t(:ec) %>      <%= f.check_box :tag_list, { :multiple => true }, 'clothingshoesjewelry', nil%> <%=  t(:csj) %>
+<%= f.check_box :tag_list, { :multiple => true }, 'homegardentools', nil%> <%=  t(:hgt) %>        <%= f.check_box :tag_list, { :multiple => true }, 'sportsoutdoors', nil%> <%=  t(:so) %>
+<%= f.check_box :tag_list, { :multiple => true }, 'automotiveindustrial', nil%> <%=  t(:ai) %>    
+</pre>
+</div>
 
-  
-
-    <%= f.submit t(:create), class: "btn btn-primary" %>
-  
+<div class="col-md-6">
+    <p></p>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: "custom-file-input" %>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+</div>
+    
+<hr>
+    <div class="text-center">
+        <%= f.submit t(:create), class: "btn btn-primary" %>
+    </div>
+</div>
 </div>
 <% end %>
 

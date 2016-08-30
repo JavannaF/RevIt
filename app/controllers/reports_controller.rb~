@@ -53,7 +53,7 @@ class ReportsController < ApplicationController
          @item=@review.item
          @user=current_user
          if !@user.active_reports.empty?
-          if @user.active_reports.exists?(['review_id LIKE ?',params[:review_id]])
+          if @user.active_reports.exists?(['reported_id LIKE ?',params[:review_id]])
            redirect_to "/items/"+@item.id.to_s
         end
       end
@@ -67,6 +67,7 @@ class ReportsController < ApplicationController
       if current_user!=nil
       redirect_to(root_url) unless current_user.admin?
       else redirect_to(root_url) 
+      end
     end
  
 end

@@ -198,9 +198,75 @@
                 </div>
 
             </div>
-
+            <!-- col-md-9 -->
+            <div class="col-md-3">
+                <h2>Special Offer</h2>
+                <% if add.count >= 4 %>
+                <div class="container-fluid">
+                <div class="thumbnail">
+                    <% @add1 = Add.order("created_at DESC").first %>
+                            <% if !@add1.picture.present? %>
+                                <%= link_to image_tag("http://placehold.it/400x200"), @add1 %> 
+                            <% else %>
+                                <%= link_to image_tag(@add1.picture.most_commented.url), @add1 %> 
+                            <% end %>
+                            <div class="caption">
+                                <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @add1.price %></h4>
+                                <h4><%= link_to @add1.name,  @add1 %></a>
+                                </h4>
+                                <p><%= @add1.description %></p>
+                            </div>
+                </div>
+                <div class="thumbnail">
+                    <% @add2 = Add.order("created_at DESC").second %>
+                            <% if !@add2.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/400x200"), @add2 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@add2.picture.most_commented.url), @add2 %> 
+                            <% end %>
+                            <div class="caption">
+                                <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @add2.price %></h4>
+                                <h4><%= link_to @add2.name,  @add2 %></a>
+                                </h4>
+                                <p><%= @add2.description %></p>
+                            </div>
+                </div>
+                
+                <div class="thumbnail">
+                    <% @add3 = Add.order("created_at DESC").third %>            
+                            <% if !@add3.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/400x200"), @add3 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@add3.picture.most_commented.url), @add3 %> 
+                            <% end %>
+                            <div class="caption">
+                                <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @add3.price %></h4>
+                                <h4><%= link_to @add3.name,  @add3 %></a>
+                                </h4>
+                                <p><%= @add3.description %></p>
+                            </div>
+                </div>
+                
+                <div class="thumbnail">
+                    <% @add4 = Add.order("created_at DESC").fourth %>
+                            <% if !@add4.picture.present? %>
+                                    <%= link_to image_tag("http://placehold.it/400x200"), @add4 %> 
+                            <% else %>
+                                    <%= link_to image_tag(@add4.picture.most_commented.url), @add4 %> 
+                            <% end %>
+                            <div class="caption">
+                                <h4 class="pull-right"><i class="fa fa-usd" aria-hidden="true"></i> <%= @add4.price %></h4>
+                                <h4><%= link_to @add4.name,  @add4 %></a>
+                                </h4>
+                                <p><%= @add4.description %></p>
+                            </div>
+                </div>
+                </div>
+                <% end %>
+            </div>
+            
         </div>
-
+        <!-- row -->
     </div>
     <!-- /.container -->
 

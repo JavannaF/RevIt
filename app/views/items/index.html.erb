@@ -30,6 +30,22 @@
             <%= link_to t(:view)+" "+t(:item), item_path(item.id) ,class: "btn btn-primary" %>
 
         </div>
+        
+        <div class="col-md-1">
+            <% if item.user == current_user %>
+    
+            <p>
+                <%= link_to '', [item],
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } , class: "fa fa-times", style: "color:#DC143C" %>
+                
+            </p>
+            <p>
+                <%= link_to "", edit_item_path(item), class: "fa fa-pencil-square-o", style: "color:#6495ED" %>
+            </p>
+    
+            <% end %>
+        </div>
             
     </div>
     <!-- /.row -->
@@ -38,8 +54,8 @@
 
 <% end %>
 
- <tr> <% if !@items.present? %>
-  <p><%= t(:nosearchitem) %></p> </tr>
+<% if !@items.present? %>
+  <p><%= t(:nosearchitem) %></p>
 <% end %>
 
 <%= will_paginate  @items %>

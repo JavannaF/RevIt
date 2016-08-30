@@ -1,13 +1,14 @@
 class AddsController < ApplicationController
+  before_action :set_add, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_owner, only: [:create, :destroy, :update]
   before_action :correct_owner,   only: [:destroy, :update]
   def new
     @add = Add.new
   end
-   def show
+  def show
   end
-  def index   
-    @add = Add.paginate(page: params[:page]).per_page(10)
+  def index 
+    @adds = Add.all.paginate(page: params[:page]).per_page(10)
   end
  
   def create
@@ -37,6 +38,11 @@ class AddsController < ApplicationController
   end
 
   private
+  
+     # Use callbacks to share common setup or constraints between actions.
+    def set_add
+      @add = Add.find(params[:id])
+    end
 
     def add_params
       params.require(:add).permit(:name, :description, :price, :picture)

@@ -63,27 +63,6 @@ RSpec.describe ReportsController, type: :controller do
         get :index
         expect(response).to render_template :index
       end
-    end
-
-    context "if not admin" do 
-    before :each do
-      @user = FactoryGirl.create(:user)
-      sign_in @user
-      
-    end
-
-    it "should not destroy report" do
-        @report = FactoryGirl.create(:report)
-        count = Report.count
-        delete :destroy, id: @report
-        assert_response :redirect
-    	expect(Report.count).to eq(count)
-      end
-
-    it "not renders the :index view" do
-        get :index
-        expect(response).to redirect_to root_url
-      end
   end
 
   private

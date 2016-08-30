@@ -2,11 +2,7 @@
 <li id="add-<%= add.id %>">
     <div class="row">
         <div class="col-md-3">
-            <% if !add.picture.present? %>
-                <%= link_to image_tag("http://placehold.it/200x150"), add.owner %> 
-            <% else %>
-                <%= link_to image_tag(add.picture.listing_items.url), add.owner %> 
-            <% end %>
+            
 
         </div>
         <div class="col-md-8">
