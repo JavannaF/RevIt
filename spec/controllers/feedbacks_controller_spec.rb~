@@ -38,10 +38,32 @@ RSpec.describe FeedbacksController, type: :controller do
           @feedback = FactoryGirl.create(:feedback)
           post :create, feedback: { receiver: @feedback.receiver, giver: @feedback.giver, value: @feedback.value }, :receiver_id => @feedback.receiver
           post :create, feedback: { receiver: @feedback.receiver, giver: @feedback.giver, value: @feedback.value }, :receiver_id => @feedback.receiver
-          expect(response).to redirect_to(@user)
+          expect(response).to redirect_to(@feedback.receiver)
         end
       end 
     end
+
+    context "if admin" do 
+    before :each do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @user.admin = true
+      @user.save
+    end
+
+    it "should destroy report" do
+        @report = FactoryGirl.create(:report)
+        count = Report.count
+        delete :destroy, id: @report
+        assert_response :redirect
+    	expect(Report.count).not_to eq(count)
+      end
+
+    it "renders the :index view" do
+        get :index
+        expect(response).to render_template :index
+      end
+  end
 
   private
     

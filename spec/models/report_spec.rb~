@@ -14,11 +14,11 @@ RSpec.describe Report, type: :model do
     expect(report.save!).to eq true
   end
   
-  it "is invalid without a reporter" do
-    assert !FactoryGirl.build(:report, reporter: nil).valid?
+  it "is invalid without a user" do
+    assert !FactoryGirl.build(:report, user: nil).valid?
   end
   
-  it "is invalid without a reported" do
-    assert !FactoryGirl.build(:report, reported: nil).valid?
+  it "is invalid without a review" do
+    assert !FactoryGirl.build(:report, review: nil).valid?
   end
 end

@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(version: 20160829125654) do
   add_index "owners", ["email"], name: "index_owners_on_email", unique: true
 
   create_table "reports", force: :cascade do |t|
-    t.integer  "review_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "reported_id"
+    t.integer  "reporter_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "reviews", force: :cascade do |t|
