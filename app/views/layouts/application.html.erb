@@ -210,14 +210,14 @@
                 
                
                 <ul class="nav navbar-nav navbar-right">    
-                        
+                        <% if !logged_in? && !logged_in_owner? %>
                         <li>
                             <a href="/signup"> <%= t(:signup) %> </a>
                         </li>
                         <li>
                             <a href="/signupowners"><%=  t(:signup)+" "+t(:as)+" "+t(:owner) %></a>
                         </li>
-                        
+                        <% end %>
                         <li>
 
                             <%= form_tag(search_index_path, :method => "get", id: "search-form") do %>

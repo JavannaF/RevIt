@@ -1,6 +1,6 @@
 <%= @owner = current_owner %>
         <%= @add = @owner.adds.new %>
-        <%= form_for(@add) do |f| %>
+        <%= form_for([@owner,@add]) do |f| %>
             <% if @add.errors.any? %>
                 <div id="error_explanation">
                     <h2><%= pluralize(@add.errors.count, "error") %> prohibited this add from being saved:</h2>

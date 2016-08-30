@@ -39,50 +39,58 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-     <%=link_to("English", "http://localhost:3000"+"#{request.env['PATH_INFO']}")%>
-     <%=link_to("Italian", "http://localhost.it:3000"+"#{request.env['PATH_INFO']}")%>
     <% if !logged_in? && !logged_in_owner? %>
     <!-- Header -->
     <div class="container">
+       <div class="row">
+          <div class="col-md-10">
+            <h1>RevIt</h1>
+          </div>
+          <div class="col-md-2"> 
+            <%=link_to(image_tag("usa"), "http://localhost:3000"+"#{request.env['PATH_INFO']}")%>
+            <%=link_to(image_tag("italy"), "http://localhost.it:3000"+"#{request.env['PATH_INFO']}")%>
+          </div>
+        </div>
         <div class="row">
-            <div class="col-lg-6">
-                <h1>RevIt</h1>
+            <div class="col-md-8">
             </div>
-        
-            <div class="col-lg-6">
-            <div class="col-sm-4">
+            <div class="col-md-1">
                 <a href="/auth/facebook">
                     <i class="fa fa-facebook-square fa-3x" aria-hidden="true" style="color:#3b5998"></i>
                 </a>
             </div>
+            <div class="col-md-3">
+                    <div class="btn-group open">
+                        <a class="btn btn-primary" href="/login"><i class="fa fa-user fa-fw"></i> Login</a>
+                    </div>
             
-            <div class="col-sm-4">
-                <div class="btn-group open">
-                    <a class="btn btn-primary" href="/login"><i class="fa fa-user fa-fw"></i> Login</a>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="btn-group open">
-                    <a class="btn btn-primary" href="/loginowners"><i class="fa fa-user fa-fw"></i> Login <%=t(:owners)%></a>
-                </div>
-            </div>
-            
-            </div>
+                    <div class="btn-group open">
+                        <a class="btn btn-primary" href="/loginowners"><i class="fa fa-user fa-fw"></i> Login <%=t(:owners)%></a>
+                    </div>
+             </div>
         </div>
     </div>
     <% else %>
     <% if logged_in_owner? %>
-      <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h1>RevIt</h1>
+      <div class="row">
+          <div class="col-md-10">
+            <h1>RevIt</h1>
+          </div>
+          <div class="col-md-2"> 
+            <%=link_to(image_tag("usa"), "http://localhost:3000"+"#{request.env['PATH_INFO']}")%>
+            <%=link_to(image_tag("italy"), "http://localhost.it:3000"+"#{request.env['PATH_INFO']}")%>
+          </div>
+        </div>
+      <div class="row">
+            <div class="col-md-8">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-                        <%= link_to gravatar_for(@owner), @owner %> 
-                        <%= @owner.name %>
+                        <%= link_to gravatar_for(current_owner), current_owner %> 
+                        <%= current_owner.name %>
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li><%= link_to "   Profile", current_owner, class: "fa fa-fw fa-user" %></li>
@@ -94,13 +102,23 @@
             </div>
         </div>
     </div>
+      
     <% else if logged_in? %>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10">
-                <Strong><h1>RevIt</h1></Strong>
+    <div class="row">
+          <div class="col-md-10">
+            <h1>RevIt</h1>
+          </div>
+          <div class="col-md-2"> 
+            <%=link_to(image_tag("usa"), "http://localhost:3000"+"#{request.env['PATH_INFO']}")%>
+            <%=link_to(image_tag("italy"), "http://localhost.it:3000"+"#{request.env['PATH_INFO']}")%>
+          </div>
+        </div>
+      <div class="row">
+            <div class="col-md-8">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
                         <%= link_to gravatar_for(current_user), current_user %> 
@@ -115,10 +133,10 @@
                 </div>
             </div>
         </div>
-    </div>
-    <% end %>
-    <% end %>
-    <% end %>
+    </div>  
+<% end %>
+<% end %>
+<% end %>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar" role="navigation">
         <div class="container">
@@ -175,7 +193,16 @@
                             <a href="/items"> <%= t(:items) %> </a>
                         </li>
                         <li>
+                            <a href="/adds"> <%= t(:adds) %> </a>
+                        </li>
+                        <li>
                             <a href="/contacts/new"> <%= t(:contact) %></a>
+                        </li>
+                        <li>
+                            <a href="/users"> <%= t(:users) %> </a>
+                        </li>
+                        <li>
+                            <a href="/owners"> <%= t(:owners) %> </a>
                         </li>
                 </ul> 
                 
@@ -183,29 +210,22 @@
                 
                
                 <ul class="nav navbar-nav navbar-right">    
-                        
+                        <% if !logged_in? || !logged_in_owner? %>
                         <li>
                             <a href="/signup"> <%= t(:signup) %> </a>
                         </li>
                         <li>
                             <a href="/signupowners"><%=  t(:signup)+" "+t(:as)+" "+t(:owner) %></a>
                         </li>
-                        
-                        <li>
-<<<<<<< HEAD
-                        <%= form_tag(search_index_path, :method => "get", id: "search-form") do %>
-                        <%= text_field_tag :search, params[:search], placeholder: t(:search)+" "+t(:user)+" "+t(:or)+" "+t(:owners) %>
-                        <%= submit_tag t(:search) %>
                         <% end %>
-                        <%= link_to t(:advsearch), items_search_path%></li>
-                        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-=======
+                        <li>
+
                             <%= form_tag(search_index_path, :method => "get", id: "search-form") do %>
                             <%= text_field_tag :search, params[:search], placeholder: t(:search)+" "+t(:user)+" "+t(:or)+" "+t(:owners) %>
                             <%= link_to "", items_search_path, class: "fa fa-bars fa-2x" %>
                             <% end %>
                         </li>
->>>>>>> d095146338c38e2acd23142a1a6281e2a0f8b5f9
+
                 </ul>
                 
             </div>
