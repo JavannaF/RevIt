@@ -6,13 +6,13 @@ class ItemsController < ApplicationController
   # GET /items.json
   
   def index
-    @item = Item.maximum(Item.all.reviews.group(:item).count)
+    
     if (params[:category])
       @items=Item.tagged_with(params[:category]).paginate(page:params[:page]).per_page(10)    
     else
      if (params[:name] || params[:avg_rating]|| params[:min_price] || params[:max_price]||params[:category_search])
        @items2 = Item.search(params[:name], params[:avg_rating], params[:min_price], params[:max_price]).all
-       category_search_var=params[:category_search].strip.downcase.delete("^a-z")
+       category_search_var=params[:category_search]
        if(category_search_var!="selectone")           
            @items=[]
            @items2.each do |item|
@@ -81,9 +81,6 @@ class ItemsController < ApplicationController
     redirect_to request.referrer || root_url
   end
   
-  def most_commented
-    @item = Item.maximum(Reviews.group(:item).count)
-  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -99,6 +96,7 @@ class ItemsController < ApplicationController
       @item = current_user.items.find_by(id: params[:id])
       redirect_to root_url if @item.nil?
     end
-
+    
+    
     
 end

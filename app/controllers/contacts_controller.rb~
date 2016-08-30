@@ -1,3 +1,4 @@
+
 class ContactsController < ApplicationController
   before_action :admin_user, only: [:index, :destroy]
   def index

@@ -12,10 +12,15 @@ class User < ActiveRecord::Base
   has_many :feedbacks, through: :active_feedbacks, source: :receiver
   #GIVER DELLE VALUTAZIONI
   has_many :active_evaluations, class_name: "Evaluation",
-  				foreign_key: "user_id",
+  				foreign_key: "evaluater_id",
   				dependent: :destroy
   has_many :evaluations, through: :active_evaluations, source: :evaluated
-
+  #REPORTER
+  has_many :active_reports, class_name: "Reports",
+  				foreign_key: "user_id",
+  				dependent: :destroy
+  has_many :reports, through: :active_reports, source: :reported
+  #end#Reporter
   has_many :reviews, dependent: :destroy
   has_many :authorizations
   has_many :items, dependent: :destroy

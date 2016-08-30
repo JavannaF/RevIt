@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
+  resources :reports
   post 'feedbacks/create'
   post 'evaluations/create'
   get 'owners/new'
   get 'search/index'
   get 'password_resets/new'
-
+  post 'reports/create'
   get 'password_resets/edit'
   
   get 'sessions/new'
-
+  get 'users/:id/my_review'=> 'users#my_review'
   get  'signup' => 'users#new'
   get  'signupowners' => 'owners#new'
   get  'categories' => 'items#categories'
@@ -32,7 +33,8 @@ Rails.application.routes.draw do
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'signout'
   
-  resources :feedbacks
+  resources :feedbacks,  only: [:new,:create]
+  resources :evaluation, only: [:new, :create]
   resources :contacts
   resources :owners
   resources :users

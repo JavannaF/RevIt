@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820153138) do
+ActiveRecord::Schema.define(version: 20160826090951) do
 
   create_table "adds", force: :cascade do |t|
     t.string   "name"
@@ -34,12 +34,28 @@ ActiveRecord::Schema.define(version: 20160820153138) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "feedbacks", force: :cascade do |t|
-    t.boolean  "value"
+  create_table "cts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "author"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "value"
+    t.integer  "evaluated_id"
+    t.integer  "evaluater_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.boolean  "value"
     t.integer  "receiver_id"
     t.integer  "giver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -48,12 +64,13 @@ ActiveRecord::Schema.define(version: 20160820153138) do
     t.float    "avg_rating"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "picture"
     t.string   "store_location"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "count",          default: 0
   end
 
   add_index "items", ["user_id", "created_at"], name: "index_items_on_user_id_and_created_at"
@@ -140,5 +157,20 @@ ActiveRecord::Schema.define(version: 20160820153138) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
 
 end

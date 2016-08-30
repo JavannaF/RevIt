@@ -55,6 +55,14 @@ RSpec.describe "routes for items", :type => :routing do
                       
                   )
         end
+
+        it "item category" do
+          expect(:get => "/categories").to route_to(
+                      :controller => "items",
+                      :action => "categories",
+                      
+                  )
+        end
                        
 
              

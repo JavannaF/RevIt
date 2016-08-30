@@ -8,7 +8,7 @@
             
         </div>
         <div class="col-md-3">
-            <h4><strong>Price: <i class="fa fa-usd" aria-hidden="true"></i></strong> <%= review.price %></h4>
+            <h4><strong><%= t(:price) %> <i class="fa fa-usd" aria-hidden="true"></i></strong> <%= review.price %></h4>
         </div>
     </div>
     
@@ -19,7 +19,7 @@
          </div> 
          
          <div class="col-md-3">
-            <strong>Store:</strong> <%= review.store %>, <%= review.store_location %>
+            <strong><%= t(:store)%>:</strong> <%= review.store %>, <%= review.store_location %>
        
             <p>
             <p class="Like">
@@ -40,14 +40,25 @@
              </p>
          </div>                  
         
-        
+
     </div>
    
     <hr>
     <p class="pull-right">
         Posted <%= time_ago_in_words(review.created_at) %> ago.
     </p>
-    
+                 <%if current_user.active_reports.exists?(['review_id LIKE ?', review.id]) %>     
+   <%= t(:abreported)%>
+   <%end%> 
+      <%if current_user!= nil && !current_user.active_reports.exists?(['review_id LIKE ?',review.id]) && review.user.id!= current_user.id%>
+      <%= form_tag(reports_create_path, method: :post) do%>
+      <%= hidden_field_tag 'user_id', current_user.id %>
+      <%= hidden_field_tag 'review_id', review.id %>
+      <%= submit_tag I18n.t("reportab") %>
+ <%end%>
+
+<%end%>
+
     <% if review.user == current_user %>
     
     <p>
@@ -73,11 +84,5 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="app/assets/javascripts/bootstrap.min.js"></script>
-
-
-
-
-
-
 
 
