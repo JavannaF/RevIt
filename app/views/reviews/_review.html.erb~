@@ -70,7 +70,7 @@
         Posted <%= time_ago_in_words(review.created_at) %> ago.
     </p>
 
-                 <%if current_user!=nil && current_user.active_reports.exists?(['review_id LIKE ?', review.id]) %>     
+           <%if current_user!=nil && current_user.active_reports.exists?(['reported_id LIKE ?', review.id]) %>     
 
    <%= t(:abreported)%>
    <%end%> 

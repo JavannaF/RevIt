@@ -17,9 +17,9 @@ class ReportsController < ApplicationController
   # POST /reports
   # POST /reports.json
   def create
-    @review=Review.find(params[:review_id])
+    @review=Review.find(params[:reported_id])
     @report = Report.new(report_params)
-    @user=User.find(params[:user_id])
+    @user=User.find(params[:reporter_id])
  
     
       if @report.save
@@ -49,11 +49,11 @@ class ReportsController < ApplicationController
     end
 
     def exist_report
-         @review=Review.find(params[:review_id])
+         @review=Review.find(params[:reported_id])
          @item=@review.item
          @user=current_user
          if !@user.active_reports.empty?
-          if @user.active_reports.exists?(['reported_id LIKE ?',params[:review_id]])
+          if @user.active_reports.exists?(['reported_id LIKE ?',params[:reported_id]])
            redirect_to "/items/"+@item.id.to_s
         end
       end
