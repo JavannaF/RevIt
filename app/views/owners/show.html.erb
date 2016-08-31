@@ -7,16 +7,16 @@
     Be the first! Evaluate: 
     
     <%= form_tag(evaluations_create_path, method: :post)%>
-    <%= hidden_field_tag 'owner_id', @owner.id %>
+    <%= hidden_field_tag 'evaluated_id', @owner.id %>
     <%=number_field_tag 'value', 1, in: 1...11, step:1%>
     <%= submit_tag 'Go!' %>
     <%else%>t(:noevyet)<%end%>  
     <%else%> 
     Evaluatated :<%=@owner.passive_evaluations.average(:value)%>/10 
-    <% if current_user!=nil && !@owner.passive_evaluations.exists?(['user_id LIKE ?',current_user.id])%>      
+    <% if current_user!=nil && !@owner.passive_evaluations.exists?(['evaluater_id LIKE ?',current_user.id])%>      
 
     <%= form_tag(evaluations_create_path, method: :post)%>
-    <%= hidden_field_tag 'owner_id', @owner.id %>
+    <%= hidden_field_tag 'evaluated_id', @owner.id %>
     <%=number_field_tag 'value', 1, in: 1...11, step:1%>
     <%= submit_tag 'Go!' %>
 <%end%>

@@ -1,40 +1,27 @@
 <div class="container">
     <% provide(:title, @owner.name) %>
 
-<div>
-<<<<<<< HEAD
-<% if @owner.passive_evaluations.empty? %>
-<% if current_user!=nil%>
-Be the first! Evaluate: 
-<%= form_tag(evaluations_create_path, method: :post)%>
-<%= hidden_field_tag 'owner_id', @owner.id %>
-<%=number_field_tag 'value', 1, in: 1...11, step:1%>
- <%= submit_tag 'Go!' %>
-  <%else%><%= t(:noevyet) %><%end%>  
-   <%else%> 
-  Evaluatated :<%=@owner.passive_evaluations.average(:value)%>/10 
-<% if current_user!=nil && !@owner.passive_evaluations.exists?(['user_id LIKE ?',current_user.id])%>      
-=======
+
     <% if @owner.passive_evaluations.empty? %>
     <% if current_user!=nil%>
     Be the first! Evaluate: 
     
     <%= form_tag(evaluations_create_path, method: :post)%>
-    <%= hidden_field_tag 'owner_id', @owner.id %>
+    <%= hidden_field_tag 'evaluated_id', @owner.id %>
     <%=number_field_tag 'value', 1, in: 1...11, step:1%>
     <%= submit_tag 'Go!' %>
-    <%else%>t(:noevyet)%end%>  
+    <%else%>t(:noevyet)<%end%>  
     <%else%> 
     Evaluatated :<%=@owner.passive_evaluations.average(:value)%>/10 
-    <% if current_user!=nil && !@owner.passive_evaluations.exists?(['user_id LIKE ?',current_user.id])%>      
->>>>>>> d095146338c38e2acd23142a1a6281e2a0f8b5f9
-      <%= form_tag(evaluations_create_path, method: :post)%>
-    <%= hidden_field_tag 'owner_id', @owner.id %>
+    <% if current_user!=nil && !@owner.passive_evaluations.exists?(['evaluater_id LIKE ?',current_user.id])%>      
+
+    <%= form_tag(evaluations_create_path, method: :post)%>
+    <%= hidden_field_tag 'evaluated_id', @owner.id %>
     <%=number_field_tag 'value', 1, in: 1...11, step:1%>
     <%= submit_tag 'Go!' %>
 <%end%>
 <%end%>
-</div>
+
 
     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@owner.latitude}%2C#{@owner.longitude}" %>
 
@@ -47,16 +34,4 @@ Be the first! Evaluate:
             <%= will_paginate @adds %>
         <% end %>
     </div>
-
-
-<%= link_to 'Home', home_path %>
-  <%= link_to "Owners",    owners_path %>
-  <% if logged_in_owner? %>
-  <%= link_to "Settings", edit_owner_path(current_owner) %>
-  
-  <%= link_to "Log out", logoutowners_path, method: :delete %>
-  <%= link_to "Profile", current_owner %>
-  <% else %>
-  <% end %>
-  <%= link_to "Log in", loginowners_path %>
 </div>

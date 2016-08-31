@@ -23,7 +23,7 @@ class EvaluationsController < ApplicationController
     end
     private
        def evaluation_params
-        params.permit(:value,:owner_id,:user_id) 
+        params.permit(:value,:evaluated_id,:evaluater_id) 
        end  
 
        def exist_evaluation
