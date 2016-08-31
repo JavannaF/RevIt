@@ -74,8 +74,8 @@
                                 <p><%= @item1.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right"><%= @item1.count %> Reviews</p>
-                                <div class="review-rating" data-score="<%= @item1.avg_rating %>"></div> <%= @item1.avg_rating %> stars
+                                <p class="pull-right"><%= @item1.count %> <%= t(:reviews)%></p>
+                                <div class="review-rating" data-score="<%= @item1.avg_rating %>"></div> <%= @item1.avg_rating %> <%= t(:stars)%>
                             </div>
                         </div>
                     </div>
@@ -95,9 +95,9 @@
                                 <p><%= @item2.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right"><%= @item2.count %> Reviews</p>
+                                <p class="pull-right"><%= @item2.count %> <%= t(:reviews)%></p>
                                 <p>
-                                    <div class="review-rating" data-score="<%= @item2.avg_rating %>"></div> <%= @item2.avg_rating %> stars
+                                    <div class="review-rating" data-score="<%= @item2.avg_rating %>"></div> <%= @item2.avg_rating %> <%= t(:stars)%>
                                 </p>
                             </div>
                         </div>
@@ -117,9 +117,9 @@
                                 <p><%= @item3.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right"><%= @item3.count %> Reviews</p>
+                                <p class="pull-right"><%= @item3.count %> <%= t(:reviews)%></p>
                                 <p>
-                                    <div class="review-rating" data-score="<%= @item3.avg_rating %>"></div> <%= @item3.avg_rating %> stars
+                                    <div class="review-rating" data-score="<%= @item3.avg_rating %>"></div> <%= @item3.avg_rating %> <%= t(:stars)%>
                                 </p>
                             </div>
                         </div>
@@ -140,9 +140,9 @@
                                 <p><%= @item4.description %></p>
                             </div>
                             <div class="ratings">
-                               <p class="pull-right"><%= @item4.count %> Reviews</p>
+                               <p class="pull-right"><%= @item4.count %> <%= t(:reviews)%></p>
                                 <p>
-                                    <div class="review-rating" data-score="<%= @item4.avg_rating %>"></div> <%= @item4.avg_rating %> stars
+                                    <div class="review-rating" data-score="<%= @item4.avg_rating %>"></div> <%= @item4.avg_rating %> <%= t(:stars)%>
                                 </p>
                             </div>
                         </div>
@@ -163,9 +163,9 @@
                                 <p><%= @item5.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right"><%= @item5.count %> Reviews</p>
+                                <p class="pull-right"><%= @item5.count %> <%= t(:reviews)%></p>
                                 <p>
-                                    <div class="review-rating" data-score="<%= @item5.avg_rating %>"></div> <%= @item5.avg_rating %> stars
+                                    <div class="review-rating" data-score="<%= @item5.avg_rating %>"></div> <%= @item5.avg_rating %> <%= t(:stars)%>
                                 </p>
                             </div>
                         </div>
@@ -186,9 +186,9 @@
                                 <p><%= @item6.description %></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right"><%= @item6.count %> Reviews</p>
+                                <p class="pull-right"><%= @item6.count %> <%= t(:reviews)%></p>
                                 <p>
-                                    <div class="review-rating" data-score="<%= @item6.avg_rating %>"></div> <%= @item6.avg_rating %> stars
+                                    <div class="review-rating" data-score="<%= @item6.avg_rating %>"></div> <%= @item6.avg_rating %> <%= t(:stars)%>
                                 </p>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
             </div>
             <!-- col-md-9 -->
             <div class="col-md-3">
-                <h2>Special Offer</h2>
+                <h2><%= t(:specialoffer)%></h2>
                 <div class="container-fluid">
                 <div class="thumbnail">
                     <% @add1 = Add.order("created_at DESC").first %>

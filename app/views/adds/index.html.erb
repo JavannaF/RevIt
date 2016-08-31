@@ -23,7 +23,7 @@
                 <h3><%= link_to add.name, add %>
                 <h4><i class="fa fa-usd" aria-hidden="true"></i> <%= add.price %></h4>
                 <p>
-                    <i class="fa fa-sitemap" aria-hidden="true"></i> <strong>:</strong> <%= add.owner.website %>
+                    <i class="fa fa-sitemap" aria-hidden="true"></i> <strong>:</strong> <%= link_to add.owner.website, "http://#{add.owner.website}" %>
                     &nbsp&nbsp&nbsp&nbsp
                     <i class="fa fa-envelope" aria-hidden="true"></i> <strong>:</strong> <%= add.owner.email %> 
                 </p>

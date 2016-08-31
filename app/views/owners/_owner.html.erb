@@ -11,7 +11,7 @@
             <h3><%= link_to owner.name,  owner %></h3>
             <strong>Email: </strong><%= owner.email %>
             <p>
-                <strong>Website: </strong><%= owner.website %>
+                <strong>Website: </strong><%= link_to owner.website, "http://#{owner.website}" %>
                 <strong>Address: </strong><%= owner.address %>
             </p>
         </div>

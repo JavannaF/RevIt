@@ -1,5 +1,7 @@
 <%= @owner = current_owner %>
-        <%= @add = @owner.adds.new %>
+        <% if current_owner != nil %>
+            <%= @add = @owner.adds.new %>
+        <% end %>
         <%= form_for(@add) do |f| %>
             <% if @add.errors.any? %>
                 <div id="error_explanation">
