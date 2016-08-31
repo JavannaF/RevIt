@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   #Report#
   has_many :passive_reports, class_name: "Report",
-  				foreign_key: "review_id",
+  				foreign_key: "reported_id",
 				dependent: :destroy
   has_many :reporters, through: :passive_reports, source: :reporter
   #end#Report#
