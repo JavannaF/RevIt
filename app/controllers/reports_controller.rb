@@ -52,11 +52,11 @@ class ReportsController < ApplicationController
          @review=Review.find(params[:reported_id])
          @item=@review.item
          @user=current_user
-         if !@user.active_reports.empty?
-          if @user.active_reports.exists?(['reported_id LIKE ?',params[:reported_id]])
+         
+          if @review.passive_reports.exists?(['reporter_id LIKE ?',params[:reporter_id]])
            redirect_to "/items/"+@item.id.to_s
         end
-      end
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

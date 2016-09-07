@@ -8,7 +8,7 @@ RSpec.describe ReportsController, type: :controller do
 
   it "should create report" do
           @report = FactoryGirl.create(:report)
-          post :create, report: { reporter: @report.reporter, reported: @report.reported}, :review_id => @report.reported, :user_id => @report.reporter 
+          post :create, report: { reporter: @report.reporter, reported: @report.reported}, :reported_id => @report.reported, :reporter_id => @report.reporter 
           assert_response :redirect
     end
 
@@ -17,7 +17,7 @@ RSpec.describe ReportsController, type: :controller do
         
         it "redirects to the new contact" do
           @report = FactoryGirl.create(:report)
-          post :create,  report: { reporter: @report.reporter, reported: @report.reported}, :review_id => @report.reported, :user_id => @report.reporter 
+          post :create,  report: { reporter: @report.reporter, reported: @report.reported}, :reported_id => @report.reported, :reporter_id => @report.reporter 
           expect(response.status).to eq(302)
         end
       end
@@ -27,18 +27,18 @@ RSpec.describe ReportsController, type: :controller do
         it "does not save the new report with same giver and receiver" do
           @report = FactoryGirl.create(:report)
           @report.save
-          post :create,  report: { reporter: @report.reporter, reported: @report.reported}, :review_id => @report.reported, :user_id => @report.reporter  
+          post :create,  report: { reporter: @report.reporter, reported: @report.reported}, :reported_id => @report.reported, :reporter_id => @report.reporter  
           expect{
-            post :create,  report: { reporter: @report.reporter, reported: @report.reported}, :review_id => @report.reported, :user_id => @report.reporter 
+            post :create,  report: { reporter: @report.reporter, reported: @report.reported}, :reported_id => @report.reported, :reporter_id => @report.reporter 
           }.to_not change(Report,:count)
         end
         
         
         it "re-renders the new method" do
           @report = FactoryGirl.create(:report)
-          post :create, report: { reporter: @report.reporter, reported: @report.reported}, :review_id => @report.reported, :user_id => @report.reporter 
-          post :create, report: { reporter: @report.reporter, reported: @report.reported}, :review_id => @report.reported, :user_id => @report.reporter 
-          expect(response).to redirect_to(root_url)
+          post :create, report: { reporter: @report.reporter, reported: @report.reported}, :reported_id => @report.reported, :reporter_id => @report.reporter 
+          post :create, report: { reporter: @report.reporter, reported: @report.reported}, :reported_id => @report.reported, :reporter_id => @report.reporter 
+          expect(response).to redirect_to("/items/1")
         end
       end 
     end
