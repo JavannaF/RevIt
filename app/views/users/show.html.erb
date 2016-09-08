@@ -1,12 +1,8 @@
 
 <div class="container">
 <% provide(:title, @user.name) %>
-<% if current_user!=nil &&  @user.id==current_user.id %>
 
-   
-	<%= link_to t(:my)+" "+t(:reviews), "/users/"+@user.id.to_s+"/my_review" %>
- <% end %>
-  <div>
+<div>
 <% if @user.passive_feedbacks.empty? %>
 <% if current_user!=nil &&  @user.id!= current_user.id %>
    <%= form_tag(feedbacks_create_path, method: :post) do%>

@@ -16,10 +16,10 @@
     <title>RevIt</title>
     
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="homepage.css" rel="stylesheet">
+    <link href="app/assets/stylesheets/homepage.css" rel="stylesheet">
     
     <!-- font awesome --->
     <link rel="stylesheet" href="app/assets/font-awesome/css/font-awesome.min.css">
@@ -125,8 +125,9 @@
                         <%= current_user.name %>
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                        <li><%= link_to "   Profile", current_user, class: "fa fa-fw fa-user" %></li>
-                        <li><%= link_to "   Settings  ", edit_user_path(current_user), class: "fa fa-fw fa-gear" %></li>
+                        <li><%= link_to "   "+t(:profile), current_user, class: "fa fa-fw fa-user" %></li>
+                        <li><%= link_to "   "+t(:my)+" "+t(:reviews), "/users/"+current_user.id.to_s+"/my_review" , class:"fa fa-star"%></li>
+                        <li><%= link_to "   "+t(:settings), edit_user_path(current_user), class: "fa fa-fw fa-gear" %></li>
                         <li role="presentation" class="divider"></li>
                         <li><%= link_to "   Log out  ", logout_path, method: :delete, class: "fa fa-fw fa-power-off" %></li>
                     </ul>
@@ -161,31 +162,31 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><%= t(:categories) %> <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
-                                  <a href="/items?category=booksaudible"><i class="fa fa-book" aria-hidden="true"></i><%= t(:ba) %></a>
+                                  <a href="/items?category=booksaudible"><i class="fa fa-book" aria-hidden="true"></i> <%= t(:ba) %></a>
                                 </li>
                                 <li>
-                             <a href="/items?category=moviesmusicgames"><i class="fa fa-film" aria-hidden="true"></i><%= t(:mmg) %></a>
+                             <a href="/items?category=moviesmusicgames"><i class="fa fa-film" aria-hidden="true"></i> <%= t(:mmg) %></a>
                                 </li>
                                 <li>
                                     <a href="/items?category=electronicscomputers"><i class="fa fa-laptop" aria-hidden="true"></i> <%= t(:ec) %></a>
                                 </li>
                                 <li>
-                                    <a  href="/items?category=homegardentools"><i class="fa fa-home" aria-hidden="true"></i>      <%= t(:hgt) %></a>
+                                    <a  href="/items?category=homegardentools"><i class="fa fa-home" aria-hidden="true"></i> <%= t(:hgt) %></a>
                                 </li>
                                 <li>
                                     <a href="/items?category=beautyhealthgrocery"><i class="fa fa-heart-o" aria-hidden="true"></i> <%= t(:bhg) %></a>
                                 </li>
                                 <li>
-                                    <a href="/items?category=toyskidsbaby"><i class="fa fa-child" aria-hidden="true"></i>        <%= t(:tkb) %></a>
+                                    <a href="/items?category=toyskidsbaby"><i class="fa fa-child" aria-hidden="true"></i> <%= t(:tkb) %></a>
                                 </li>
                                 <li>
-                                    <a href="/items?category=clothingshoesjewelry"><i class="fa fa-shopping-bag" aria-hidden="true"></i><%= t(:csj) %></a>
+                                    <a href="/items?category=clothingshoesjewelry"><i class="fa fa-shopping-bag" aria-hidden="true"></i> <%= t(:csj) %></a>
                                 </li>
                                 <li>
-                                    <a href="/items?category=sportsoutdoors"><i class="fa fa-futbol-o" aria-hidden="true"></i>   <%= t(:so) %></a>
+                                    <a href="/items?category=sportsoutdoors"><i class="fa fa-futbol-o" aria-hidden="true"></i> <%= t(:so) %></a>
                                 </li>
                                 <li>
-                                    <a href="/items?category=automotiveindustrial"><i class="fa fa-car" aria-hidden="true"></i><%= t(:ai) %></a>
+                                    <a href="/items?category=automotiveindustrial"><i class="fa fa-car" aria-hidden="true"></i> <%= t(:ai) %></a>
                                 </li>
                             </ul>
                         </li>
@@ -244,7 +245,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; iBuso 2016</p>
+                    <p>Copyright &copy; RevIT 2016</p>
                 </div>
             </div>
         </footer>

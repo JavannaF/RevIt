@@ -38,10 +38,14 @@ header {
 }
 
 .ratings {
-    padding-right: 10px;
-    padding-left: 10px;
-    color: #d17581;
+   
 }
+
+.review-rating {
+   width: 8%;
+   display: inline;
+}
+
 
 .thumbnail {
     padding: 0;
